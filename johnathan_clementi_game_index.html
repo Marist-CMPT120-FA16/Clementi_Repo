@@ -17,6 +17,24 @@
    <script type="text/javascript">
         // Declaration of Variables
         var currentLvl = 0;
+        var score = 0;
+        var btnErrorCount = 0;
+
+        function btnNorth_Click() {
+          if (currentLvl === 0) {
+            currentLvl = 1;
+            look()
+          }
+          else {
+            if (currentLvl === 2) {
+              currentLvl = 4;
+              look()
+            } else {
+              btnErrorCount();
+            }
+          }
+        }
+
 
         // Button Event Function Handlers
 
