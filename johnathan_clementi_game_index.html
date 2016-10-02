@@ -15,30 +15,72 @@
    </head>
    <!-- Javascript Code begins here -->
    <script type="text/javascript">
-        // Declaration of Variables
+ 
+    // Declaration of Variables
         var currentLvl = 0;
         var score = 0;
         var btnErrorCount = 0;
 
+    // Button Event Function Handlers
         function btnNorth_Click() {
           if (currentLvl === 0) {
             currentLvl = 1;
-            look()
-          }
-          else {
+            look();
+          } else {
             if (currentLvl === 2) {
               currentLvl = 4;
-              look()
+              look();
             } else {
               btnErrorCount();
             }
           }
         }
 
+        function btnWest_Click(){
+          if (currentLvl === 1){
+            currentLvl = 2;
+            look();
+          } else {
+            if (currentLvl === 3){
+              currentLvl =4 ;
+              look();
+            } else {
+              btnErrorCount();
+            }
+          }
+        }
 
-        // Button Event Function Handlers
+        function btnSouth_Click(){
+          if (currentLvl === 1){
+            currentLvl = 2;
+            look();
+          } else {
+            if (currentLvl === 2){
+              currentLvl = 0;
+              look();
+            } else
+            {btnErrorCount()
+            }
+          }
+        }
+
+        function btnEast_Click(){
+          if (currentLvl === 1){
+            currentLvl = 0;
+            look();
+          } else {
+            (currentLvl === 3){
+              currentLvl = 4;
+              look();
+            } else {
+              btnErrorCount()
+            }
+          }
+        }
 
    </script>
+
+
 
    <body>
       <h2 style="color:orange; font-weight=bold; font-size:25pt">The Game</h2>
