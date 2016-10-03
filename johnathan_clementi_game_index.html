@@ -15,11 +15,13 @@
    </head>
    <!-- Javascript Code begins here -->
    <script type="text/javascript">
- 
-    // Declaration of Variables
+
+    // Declaration of Global Variables
         var currentLvl = 0;
         var score = 0;
         var btnErrorCount = 0;
+        var errorlimit = 1;
+
 
     // Button Event Function Handlers
         function btnNorth_Click() {
@@ -78,13 +80,44 @@
           }
         }
 
+      // Location descriptions
+
+      function look() {
+        var desc = "";
+        switch (currentLvl) {
+          case 0: desc = "0. You are at the beginning";
+            break;
+          case 1: desc = "1. You are an infant, unaware of the game";
+            break;
+          case 2: desc = "2. Welcome to ";
+            break;
+          case 3: desc = "3. ";
+            break;
+          case 4: desc = "4. ";
+            break;
+          default: desc = "Wa wa wa, you lose.";
+        }
+        // Score Check
+
+        scoreMsg();
+         desc = desc + "\n" + "Your score is:" + score;
+         displayMessage (desc);
+      }
+
+      function btnErrorCount () {
+        btnErrorCount = btnErrorCount + 1;
+        if (btnErrorCount > errorlimit) {
+          displayMessage "You're still thinking about the game..."}
+        }
+      }
+
    </script>
 
 
 
    <body>
       <h2 style="color:orange; font-weight=bold; font-size:25pt">The Game</h2>
-      <h5 style="color:blue; font-size:10pt">HAHA, gotcha... well I guess you lost already</h5>
+      <h5 style="color:blue; font-size:10pt">HAHA, gotcha... well I guess you already lost</h5>
 <br>
 <textarea rows="5"
           cols="32"
