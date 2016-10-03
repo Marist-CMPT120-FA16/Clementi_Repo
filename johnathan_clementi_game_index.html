@@ -4,7 +4,7 @@
     Intro to Programming
     Prof. A. Giorgio
     October 3rd, 2016
-    Project 2: My Game-->
+    Project 2: Hitchhikers Guide to the Appalachian Trail-->
 
 <html>
    <head>
@@ -21,7 +21,15 @@
         var score = 0;
         var btnErrorCount = 0;
         var errorlimit = 1;
+        var loc1 = false;
+        var loc2 = false;
+        var loc3 = false;
+        var loc4 = false;
+        var loc0 = false;
 
+        function init(){
+          look();
+        }
 
     // Button Event Function Handlers
         function btnNorth_Click() {
@@ -85,44 +93,67 @@
       function look() {
         var desc = "";
         switch (currentLvl) {
-          case 0: desc = "0. You are at the beginning";
+          case 0: desc = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
             break;
-          case 1: desc = "1. You are an infant, unaware of the game";
+          case 1: desc = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
             break;
-          case 2: desc = "2. Welcome to ";
+          case 2: desc = "2. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
             break;
-          case 3: desc = "3. ";
+          case 3: desc = "3. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
             break;
-          case 4: desc = "4. ";
+          case 4: desc = "4. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
             break;
-          default: desc = "Wa wa wa, you lose.";
+          default: desc = "You stopped your trip short because of bad foot fungus. Better luck next year";
         }
         // Score Check
 
-        scoreMsg();
+        scoreCount();
          desc = desc + "\n" + "Your score is:" + score;
-         displayMessage (desc);
+         trailsignDisplay(desc);
       }
 
       function btnErrorCount () {
         btnErrorCount = btnErrorCount + 1;
         if (btnErrorCount > errorlimit) {
-          displayMessage "You're still thinking about the game..."}
+          trailsignDisplay "You're still thinking about the game..."}
         }
       }
 
+      function scoreCount(){
+        if((!loc0) && (currentLvl === 0)){
+          score = score + 5;
+          loc0 = true;
+        } else if ((!loc1) && (currentLvl === 1)){
+          score = score + 5;
+          loc1 = true;
+        } else if ((!loc2) && (currentLvl === 2)){
+          score = score + 5;
+          loc2 = true;
+        } else if ((!loc3) && (currentLvl === 3)){
+          score = score + 5;
+          loc3 = true;
+        } else if ((!loc4) && (currentLvl === 4)){
+          score = score + 5;
+          loc4 = true;
+        }
+      }
+
+      function trailsignDisplay() {
+        var target = document.getElementById("locMsg");
+        target.value = msg "\n\n\n" + target.value;
+      }
    </script>
 
 
 
    <body>
-      <h2 style="color:orange; font-weight=bold; font-size:25pt">The Game</h2>
-      <h5 style="color:blue; font-size:10pt">HAHA, gotcha... well I guess you already lost</h5>
+      <h2 style="color:orange; font-weight=bold; font-size:25pt">The Hitchhiker's Guide to the Applachian Trail</h2>
+      <h5 style="color:blue; font-size:10pt">The quick version</h5>
 <br>
 <textarea rows="5"
           cols="32"
           id="locMsg"
-          name="locMsg">You are at the beginning
+          name="locMsg">To begin hiking the Appalachian Trail, click any button!
 </textarea>
 
 <!-- Button Location Definitions -->
@@ -140,12 +171,6 @@
              value="East"
              onClick="btnEast_Click();">
 <br>
-  <textarea rows="2"
-            cols="32"
-            id="scoreMsg"
-            name="scoreMsg">Your score is 0
-  </textarea>
-
 
 <p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
    </body>
