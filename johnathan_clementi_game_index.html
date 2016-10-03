@@ -13,150 +13,21 @@
       </title>
       <meta charset="utf-8">
    </head>
-   <!-- Javascript Code begins here -->
-   <script type="text/javascript">
 
-    // Declaration of Global Variables
-        var currentLvl = 0;
-        var score = 0;
-        var btnErrorCount = 0;
-        var errorlimit = 1;
-        var loc1 = false;
-        var loc2 = false;
-        var loc3 = false;
-        var loc4 = false;
-        var loc0 = false;
-
-        function init(){
-          look();
-        }
-
-    // Button Event Function Handlers
-        function btnNorth_Click() {
-          if (currentLvl === 0) {
-            currentLvl = 1;
-            look();
-          } else {
-            if (currentLvl === 2) {
-              currentLvl = 4;
-              look();
-            } else {
-              btnErrorCount();
-            }
-          }
-        }
-
-        function btnWest_Click(){
-          if (currentLvl === 1){
-            currentLvl = 2;
-            look();
-          } else {
-            if (currentLvl === 3){
-              currentLvl =4 ;
-              look();
-            } else {
-              btnErrorCount();
-            }
-          }
-        }
-
-        function btnSouth_Click(){
-          if (currentLvl === 1){
-            currentLvl = 2;
-            look();
-          } else {
-            if (currentLvl === 2){
-              currentLvl = 0;
-              look();
-            } else
-            {btnErrorCount()
-            }
-          }
-        }
-
-        function btnEast_Click(){
-          if (currentLvl === 1){
-            currentLvl = 0;
-            look();
-          } else {
-            (currentLvl === 3){
-              currentLvl = 4;
-              look();
-            } else {
-              btnErrorCount()
-            }
-          }
-        }
-
-      // Location descriptions
-
-      function look() {
-        var desc = "";
-        switch (currentLvl) {
-          case 0: desc = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
-            break;
-          case 1: desc = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
-            break;
-          case 2: desc = "2. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
-            break;
-          case 3: desc = "3. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
-            break;
-          case 4: desc = "4. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
-            break;
-          default: desc = "You stopped your trip short because of bad foot fungus. Better luck next year";
-        }
-        // Score Check
-
-        scoreCount();
-         desc = desc + "\n" + "Your score is:" + score;
-         trailsignDisplay(desc);
-      }
-
-      function btnErrorCount () {
-        btnErrorCount = btnErrorCount + 1;
-        if (btnErrorCount > errorlimit) {
-          trailsignDisplay "You're still thinking about the game..."}
-        }
-      }
-
-      function scoreCount(){
-        if((!loc0) && (currentLvl === 0)){
-          score = score + 5;
-          loc0 = true;
-        } else if ((!loc1) && (currentLvl === 1)){
-          score = score + 5;
-          loc1 = true;
-        } else if ((!loc2) && (currentLvl === 2)){
-          score = score + 5;
-          loc2 = true;
-        } else if ((!loc3) && (currentLvl === 3)){
-          score = score + 5;
-          loc3 = true;
-        } else if ((!loc4) && (currentLvl === 4)){
-          score = score + 5;
-          loc4 = true;
-        }
-      }
-
-      function trailsignDisplay() {
-        var target = document.getElementById("locMsg");
-        target.value = msg "\n\n\n" + target.value;
-      }
-   </script>
-
-
-
-   <body>
+<!-- Html code  -->
+    <div style="text-align:center">
+    <body>
       <h2 style="color:orange; font-weight=bold; font-size:25pt">The Hitchhiker's Guide to the Applachian Trail</h2>
       <h5 style="color:blue; font-size:10pt">The quick version</h5>
 <br>
-<textarea rows="5"
+    <textarea rows="5"
           cols="32"
-          id="locMsg"
-          name="locMsg">To begin hiking the Appalachian Trail, click any button!
-</textarea>
+          id="textDisp"
+          name="textDisp">To begin hiking the Appalachian Trail, click any button!
+    </textarea>
 
 <!-- Button Location Definitions -->
+
 <br>
       <input type="button"
              value="North"
@@ -174,4 +45,118 @@
 
 <p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
    </body>
+ </div>
 </html>
+
+
+   <!-- Javascript Code begins here -->
+   <script type="text/javascript">
+
+    // Declaration of Global Variables
+        var currentLvl = 0;
+        var score = 0;
+        var btnErrorCount = 0;
+        var errorlimit = 1;
+        var loc1 = false;
+        var loc2 = false;
+        var loc3 = false;
+        var loc4 = false;
+        var loc1 = true;
+
+        function init(){
+          trail();
+        }
+    // Button Event Function Handlers
+        function btnNorth_Click() {
+          if (currentLvl === 0) {
+            currentLvl = 1;
+            trail();
+          } else {
+            if (currentLvl === 2) {
+              currentLvl = 4;
+              trail();
+            }
+          }
+        }
+
+        function btnWest_Click(){
+          if (currentLvl === 1){
+            currentLvl = 2;
+            trail();
+          } else {
+            if (currentLvl === 3){
+              currentLvl =4 ;
+              trail();
+            }
+          }
+        }
+
+        function btnSouth_Click(){
+          if (currentLvl === 1){
+            currentLvl = 2;
+            trail();
+          } else {
+            if (currentLvl === 2){
+              currentLvl = 0;
+              trail();
+            }
+          }
+        }
+
+        function btnEast_Click(){
+          if (currentLvl === 1){
+            currentLvl = 0;
+            trail();
+          } else {
+            (currentLvl === 3){
+              currentLvl = 4;
+              trail();
+            }
+          }
+        }
+
+      // Location descriptions and score handlers: also prevents player from getting points for visiting location a second time
+
+      function trail() {
+        var disp = "";
+        if (currentLvl === 0){
+          disp = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
+          if (loc0 === false){
+            score += 5;
+            loc0 = false;
+          }
+        } else if (currentLvl === 1) {
+            disp = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
+            if (loc1 === false){
+              score += 5;
+              loc1 = false;
+            }
+        } else if (currentLvl === 2) {
+            disp = "2. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
+            if (loc2 === false){
+              score += 5;
+              loc2 = false;
+            }
+        } else if (currentLvl === 3) {
+            disp = "3. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
+            if (loc3 === false){
+              score += 5;
+              loc3 = false;
+            }
+        } else if (currentLvl === 4) {
+            disp = "4. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
+            if (loc4 === false){
+              score += 5;
+              loc4 = false;
+            }
+        }
+
+      }
+
+      // Function to display score and location in textbox
+
+      function textDisp() {
+        document.getElementById("display").value="\n"+msg+"\n Score: "+score+"\n"+document.getElementById("display").value;
+      }
+
+   </script>
