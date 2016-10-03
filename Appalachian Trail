@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<!--Johnathan Clementi
+    Intro to Programming
+    Prof. A. Giorgio
+    October 3rd, 2016
+    Project 2: Hitchhikers Guide to the Appalachian Trail-->
+
+<html>
+   <head>
+      <title>
+         johnathan_clementi_game_index.html
+      </title>
+      <meta charset="utf-8">
+   </head>
+
+<!-- Html code  -->
+    <div style="text-align:center">
+    <body>
+      <h2 style="color:orange; font-weight=bold; font-size:25pt">The Hitchhiker's Guide to the Applachian Trail</h2>
+      <h5 style="color:blue; font-size:10pt">The quick version</h5>
+<br>
+    <textarea rows="5"
+          cols="32"
+          id="textDisp"
+          name="textDisp">To begin hiking the Appalachian Trail, click any button!
+    </textarea>
+
+<!-- Button Location Definitions -->
+
+<br>
+      <input type="button"
+             value="North"
+             onClick="btnNorth_Click();">
+      <input type="button"
+             value="West"
+             onClick="btnWest_Click();">
+      <input type="button"
+             value="South"
+             onClick="btnSouth_Click();">
+      <input type="button"
+             value="East"
+             onClick="btnEast_Click();">
+<br>
+
+<p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
+   </body>
+ </div>
+</html>
+
+
+   <!-- Javascript Code begins here -->
+   <script type="text/javascript">
+
+    // Declaration of Global Variables
+        var currentLvl = 0;
+        var score = 0;
+        var btnErrorCount = 0;
+        var errorlimit = 1;
+        var loc1 = false;
+        var loc2 = false;
+        var loc3 = false;
+        var loc4 = false;
+        var loc1 = true;
+
+        function init(){
+          trail();
+        }
+    // Button Event Function Handlers
+        function btnNorth_Click() {
+          if (currentLvl === 0) {
+            currentLvl = 1;
+            trail();
+          } else {
+            if (currentLvl === 2) {
+              currentLvl = 4;
+              trail();
+            }
+          }
+        }
+
+        function btnWest_Click(){
+          if (currentLvl === 1){
+            currentLvl = 2;
+            trail();
+          } else {
+            if (currentLvl === 3){
+              currentLvl =4 ;
+              trail();
+            }
+          }
+        }
+
+        function btnSouth_Click(){
+          if (currentLvl === 1){
+            currentLvl = 2;
+            trail();
+          } else {
+            if (currentLvl === 2){
+              currentLvl = 0;
+              trail();
+            }
+          }
+        }
+
+        function btnEast_Click(){
+          if (currentLvl === 1){
+            currentLvl = 0;
+            trail();
+          } else {
+            (currentLvl === 3){
+              currentLvl = 4;
+              trail();
+            }
+          }
+        }
+
+      // Location descriptions and score handlers: also prevents player from getting points for visiting location a second time
+
+      function trail() {
+        var disp = "";
+        if (currentLvl === 0){
+          disp = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
+          if (loc0 === false){
+            score += 5;
+            loc0 = false;
+          }
+        } else if (currentLvl === 1) {
+            disp = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
+            if (loc1 === false){
+              score += 5;
+              loc1 = false;
+            }
+        } else if (currentLvl === 2) {
+            disp = "2. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
+            if (loc2 === false){
+              score += 5;
+              loc2 = false;
+            }
+        } else if (currentLvl === 3) {
+            disp = "3. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
+            if (loc3 === false){
+              score += 5;
+              loc3 = false;
+            }
+        } else if (currentLvl === 4) {
+            disp = "4. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
+            if (loc4 === false){
+              score += 5;
+              loc4 = false;
+            }
+        }
+
+      }
+
+      // Function to display score and location in textbox
+
+      function textDisp() {
+        document.getElementById("display").value="\n"+msg+"\n Score: "+score+"\n"+document.getElementById("display").value;
+      }
+
+   </script>
