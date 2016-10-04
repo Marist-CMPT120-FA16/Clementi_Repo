@@ -20,8 +20,8 @@
       <h2 style="color:orange; font-weight=bold; font-size:25pt">The Hitchhiker's Guide to the Applachian Trail</h2>
       <h5 style="color:blue; font-size:10pt">The quick version</h5>
 <br>
-    <textarea rows="5"
-          cols="32"
+    <textarea rows="20"
+          cols="45"
           id="textDisplay">To begin hiking the Appalachian Trail, click any button!
     </textarea>
 
@@ -61,7 +61,7 @@
         var loc0 = false;
 
     // Function to display score and location in textbox
-      function textDisp(disp) {
+      function textDisp(msg) {
           document.getElementById("textDisplay").value="\n"+msg+"\n Score: "+score+"\n"+document.getElementById("textDisplay").value;
         }
 
@@ -103,53 +103,63 @@
           textDisp(disp);
         }
 
+        // Prevents from duplicating score
+        function scoreCount(){
+                if((!loc0) && (currentLvl === 0)){
+                  score = score + 5;
+                  loc0 = true;
+                } else if ((!loc1) && (currentLvl === 1)){
+                  score = score + 5;
+                  loc1 = true;
+                } else if ((!loc2) && (currentLvl === 2)){
+                  score = score + 5;
+                  loc2 = true;
+                } else if ((!loc3) && (currentLvl === 3)){
+                  score = score + 5;
+                  loc3 = true;
+                } else if ((!loc4) && (currentLvl === 4)){
+                  score = score + 5;
+                  loc4 = true;
+                }
+              }
+
+
     // Button Event Function Handlers
         function btnNorth() {
           if (currentLvl === 0) {
             currentLvl = 1;
-            trail();
-          } else {
-            if (currentLvl === 2) {
-              currentLvl = 4;
-              trail();
+          } else if (currentLvl === 2) {
+              currentLvl = 3;
             }
-          }
+            trail();
         }
 
         function btnWest(){
           if (currentLvl === 1){
             currentLvl = 2;
-            trail();
-          } else {
-            if (currentLvl === 3){
+          } else if (currentLvl === 3){
               currentLvl =4 ;
-              trail();
-            }
-          }
-        }
+              }
+           trail();
+         }
+
 
         function btnSouth(){
           if (currentLvl === 1){
             currentLvl = 2;
-            trail();
-          } else {
-            if (currentLvl === 2){
-              currentLvl = 0;
-              trail();
+          } else if (currentLvl === 3){
+              currentLvl = 4;
             }
-          }
+            trail();
         }
 
         function btnEast(){
-          if (currentLvl === 1){
-            currentLvl = 0;
-            trail();
-          } else {
-            (currentLvl === 3){
+          if (currentLvl === 2){
+            currentLvl = 3;
+          } else if (currentLvl === 3){
               currentLvl = 4;
-              trail();
             }
-          }
+            trail();
         }
 
    </script>
