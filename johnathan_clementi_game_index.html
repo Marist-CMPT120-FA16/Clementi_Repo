@@ -48,7 +48,12 @@
              onClick = "btnEast();"
              style = "color:red; font-weight=bold; font-size:15pt">
 <br>
-
+    <input type = "textbox"
+           id = "cmdBox">
+    <input type = "button"
+           value = "Manual Input"
+           onClick = "cmdBoxGo(document.getElementById('cmdBox').value)">
+<br>
 <p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
 
     <img src = "http://www.campfiremarshmallows.com/wp-content/themes/campfire/imgs/campfire-nosmoke.png" alt = "HTML5 Icon">
@@ -59,7 +64,7 @@
 
 
    <!-- Javascript Code begins here -->
-   <script type="text/javascript">
+<script type="text/javascript">
 
     // Declaration of Global Variables
         var currentLvl = 0;
@@ -73,7 +78,7 @@
         var loc6 = false;
 
     // Function to display score and location in textbox
-      function textDisp(msg) {
+      function updateDisplay(msg) {
           document.getElementById("textDisplay").value="\n"+msg+"\n Score: "+score+"\n"+document.getElementById("textDisplay").value;
         }
 
@@ -94,7 +99,7 @@
                 loc1 = true;
               }
           } else if (currentLvl === 2) {
-              disp = "2. Woohoo! You have arrived at Harpers Ferry, West Virginia.";
+              disp = "2. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!";
               if (loc2 === false){
                 score += 5;
                 loc2 = true;
@@ -124,7 +129,7 @@
                   loc6 = true;
               }
             }
-          textDisp(disp);
+          updateDisplay(disp);
         }
 
 
@@ -141,8 +146,8 @@
         function btnWest(){
           if (currentLvl === 1){
             currentLvl = 2;
-          } else if (currentLvl === 3){
-              currentLvl = 4;
+          } else if (currentLvl === 4){
+              currentLvl = 5;
               }
            trail();
          }
@@ -160,10 +165,9 @@
         function btnEast(){
           if (currentLvl === 2){
             currentLvl = 3;
-          } else if (currentLvl === 3){
-              currentLvl = 4;
+          } else if (currentLvl === 5){
+              currentLvl = 6;
             }
             trail();
         }
-
    </script>
