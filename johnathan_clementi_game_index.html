@@ -139,14 +139,28 @@
         direction = direction.toLowerCase();
 
         switch (direction) {
-          // North command
+        // North command
           case ('n'):
           case ('north'):
-          btnNorth();
+            btnNorth();
             break;
-          // South command
+        // West command
+          case ('w'):
+          case ('west'):
+            btnWest();
+            break;
+        // South command
+          case ('s'):
+          case ('south'):
+            btnSouth();
+            break;
+        // East command
+          case ('e'):
+          case ('east'):
+            btnEast();
+            break;
 
-          default:
+          default: updateDisplay("Whoops, please only input valid direction values such as North, South, East, West, N, S, E, W")
 
         }
         document.getElementById('cmdBoxGo').value = "";
