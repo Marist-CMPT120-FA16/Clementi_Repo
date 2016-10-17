@@ -19,7 +19,7 @@
       body{ background-image: url("http://cityofconway.org/media/government/boards-commissions/Tree.gif")}
       </style>
 
-      <h2 style = "color:red; font-weight=bold; font-size:35pt; text-decoration:underline; background-color:white">The Hitchhiker's Guide to the Applachian Trail</h2>
+      <h2 style = "color:red; font-weight=bold; font-size:35pt; text-decoration:underline; background-color:white">The Hitchhiker's Guide to the Appalachian Trail</h2>
       <h5 style = "color:red; font-size:15pt; background-color:white">The summary version</h5>
 <br>
     <textarea rows="10"
@@ -51,7 +51,7 @@
     <input type = "textbox"
            id = "cmdBox">
     <input type = "button"
-           value = "Manual Input"
+           value = "Lets Hike!"
            onClick = "cmdBoxGo(document.getElementById('cmdBox').value)">
 <br>
 <p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
@@ -76,6 +76,7 @@
         var loc4 = false;
         var loc5 = false;
         var loc6 = false;
+        var loc7 = false
 
     // Function to display score and location in textbox
       function updateDisplay(msg) {
@@ -123,12 +124,18 @@
                     loc5 = true;
                   }
           } else if (currentLvl === 6) {
-                disp = "6. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
+                disp = "6. Wow!!! You made it all the way to Mt. Katahdin, the northern terminus of the AT!!! You hiked a grand total of 2,181 miles!";
                 if (loc6 === false){
                   score += 5;
                   loc6 = true;
               }
+          } else if (currentLvl === 7) {
+                disp = "Well done, you have completed the Appalachian Trail! Time to return home";
+                if (loc7 === false){
+                  loc7 = true;
+              }
             }
+
           updateDisplay(disp);
         }
 
@@ -172,7 +179,11 @@
             currentLvl = 1;
           } else if (currentLvl === 2) {
               currentLvl = 3;
-            }
+          } else if (currentLvl === 4) {
+                currentLvl = 5;
+          } else if (currentLvl === 6) {
+                currentLvl = 7;
+          }
             trail();
         }
 
@@ -181,7 +192,11 @@
             currentLvl = 2;
           } else if (currentLvl === 4){
               currentLvl = 5;
-              }
+          } else if (currentLvl === 2) {
+              currentLvl = 3;
+          } else if (currentLvl === 6) {
+                currentLvl = 7;
+          }
            trail();
          }
 
@@ -191,7 +206,11 @@
             currentLvl = 2;
           } else if (currentLvl === 3){
               currentLvl = 4;
-            }
+          } else if (currentLvl === 5) {
+              currentLvl = 6;
+          } else if (currentLvl === 6) {
+                currentLvl = 7;
+          }
             trail();
         }
 
@@ -200,7 +219,11 @@
             currentLvl = 3;
           } else if (currentLvl === 5){
               currentLvl = 6;
-            }
+          } else if (currentLvl === 4) {
+              currentLvl = 5;
+          } else if (currentLvl === 6) {
+                currentLvl = 7;
+          }
             trail();
         }
    </script>
