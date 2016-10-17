@@ -132,6 +132,25 @@
           updateDisplay(disp);
         }
 
+    // User command control
+      function cmdBoxGo (direction){
+        var prevLvl = currentLvl
+
+        direction = direction.toLowerCase();
+
+        switch (direction) {
+          // North command
+          case ('n'):
+          case ('north'):
+          btnNorth();
+            break;
+          // South command
+
+          default:
+
+        }
+        document.getElementById('cmdBoxGo').value = "";
+      }
 
     // Button Event Function Handlers
         function btnNorth() {
