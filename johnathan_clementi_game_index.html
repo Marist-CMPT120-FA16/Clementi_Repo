@@ -13,36 +13,46 @@
       </title>
       <meta charset="utf-8">
    </head>
+    <div style = "text-align:center">
+    <body style = "background-color:lightgreen">
+      <style>
+      body{ background-image: url("http://cityofconway.org/media/government/boards-commissions/Tree.gif")}
+      </style>
 
-<!-- Html code  -->
-    <div style="text-align:center">
-    <body>
-      <h2 style="color:orange; font-weight=bold; font-size:25pt">The Hitchhiker's Guide to the Applachian Trail</h2>
-      <h5 style="color:blue; font-size:10pt">The quick version</h5>
+      <h2 style = "color:red; font-weight=bold; font-size:35pt; text-decoration:underline; background-color:white">The Hitchhiker's Guide to the Applachian Trail</h2>
+      <h5 style = "color:red; font-size:15pt; background-color:white">The summary version</h5>
 <br>
-    <textarea rows="20"
+    <textarea rows="10"
           cols="45"
+          style = "color:red; font-weight=bold; font-size:15pt"
           id="textDisplay">To begin hiking the Appalachian Trail, click any button!
     </textarea>
 
 <!-- Button Location Definitions -->
 
 <br>
-      <input type="button"
-             value="North"
-             onClick="btnNorth();">
-      <input type="button"
-             value="West"
-             onClick="btnWest();">
-      <input type="button"
-             value="South"
-             onClick="btnSouth();">
-      <input type="button"
-             value="East"
-             onClick="btnEast();">
+      <input type = "button"
+             value = "North"
+             onClick = "btnNorth();"
+             style = "color:red; font-weight=bold; font-size:15pt">
+      <input type = "button"
+             value = "West"
+             onClick = "btnWest();"
+             style = "color:red; font-weight=bold; font-size:15pt">
+      <input type = "button"
+             value = "South"
+             onClick = "btnSouth();"
+             style = "color:red; font-weight=bold; font-size:15pt">
+      <input type = "button"
+             value = "East"
+             onClick = "btnEast();"
+             style = "color:red; font-weight=bold; font-size:15pt">
 <br>
 
 <p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
+
+    <img src = "http://www.campfiremarshmallows.com/wp-content/themes/campfire/imgs/campfire-nosmoke.png" alt = "HTML5 Icon">
+
    </body>
  </div>
 </html>
@@ -54,11 +64,11 @@
     // Declaration of Global Variables
         var currentLvl = 0;
         var score = 0;
+        var loc0 = false;
         var loc1 = false;
         var loc2 = false;
         var loc3 = false;
         var loc4 = false;
-        var loc0 = false;
         var loc5 = false;
         var loc6 = false;
 
@@ -84,31 +94,31 @@
                 loc1 = true;
               }
           } else if (currentLvl === 2) {
-              disp = "2. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
+              disp = "2. Woohoo! You have arrived at Harpers Ferry, West Virginia.";
               if (loc2 === false){
                 score += 5;
                 loc2 = true;
               }
           } else if (currentLvl === 3) {
-              disp = "3. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
+              disp = "3. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
               if (loc3 === false){
                 score += 5;
                 loc3 = true;
               }
           } else if (currentLvl === 4) {
-              disp = "4. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
+              disp = "4. You made it to the Taconic Mountains! You're very close to Marist College!";
               if (loc4 === false){
                 score += 5;
                 loc4 = true;
               }
           } else if (currentLvl === 5) {
-              disp = "";
+              disp = "5. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
               if (loc5 === false){
                     score += 5;
                     loc5 = true;
                   }
           } else if (currentLvl === 6) {
-                disp = "";
+                disp = "6. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
                 if (loc6 === false){
                   score += 5;
                   loc6 = true;
@@ -116,32 +126,6 @@
             }
           textDisp(disp);
         }
-
-        // Prevents from duplicating score
-        function scoreCount(){
-                if((!loc0) && (currentLvl === 0)){
-                  score = score + 5;
-                  loc0 = true;
-                } else if ((!loc1) && (currentLvl === 1)){
-                  score = score + 5;
-                  loc1 = true;
-                } else if ((!loc2) && (currentLvl === 2)){
-                  score = score + 5;
-                  loc2 = true;
-                } else if ((!loc3) && (currentLvl === 3)){
-                  score = score + 5;
-                  loc3 = true;
-                } else if ((!loc4) && (currentLvl === 4)){
-                  score = score + 5;
-                  loc4 = true;
-                } else if ((!loc5) && (currentLvl === 5)){
-                  score = score + 5;
-                  loc5 = true;
-                } else if ((!loc6) && (currentLvl === 6)){
-                  score = score + 5;
-                  loc6 = true;
-                }
-              }
 
 
     // Button Event Function Handlers
