@@ -86,57 +86,57 @@
 
     // Location descriptions and score handlers: also prevents player from getting points for visiting location a second time
         function trail() {
-          var disp = "";
+          var message = "";
           if (currentLvl === 0){
-            disp = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
+            message = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
             if (loc0 === false){
               score += 5;
               loc0 = true;
             }
           } else if (currentLvl === 1) {
-              disp = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
+              message = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
               if (loc1 === false){
                 score += 5;
                 loc1 = true;
               }
           } else if (currentLvl === 2) {
-              disp = "2. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!";
+              message = "2. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!";
               if (loc2 === false){
                 score += 5;
                 loc2 = true;
               }
           } else if (currentLvl === 3) {
-              disp = "3. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
+              message = "3. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
               if (loc3 === false){
                 score += 5;
                 loc3 = true;
               }
           } else if (currentLvl === 4) {
-              disp = "4. You made it to the Taconic Mountains! You're very close to Marist College!";
+              message = "4. You made it to the Taconic Mountains! You're very close to Marist College!";
               if (loc4 === false){
                 score += 5;
                 loc4 = true;
               }
           } else if (currentLvl === 5) {
-              disp = "5. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
+              message = "5. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
               if (loc5 === false){
-                    score += 5;
-                    loc5 = true;
-                  }
+                score += 5;
+                loc5 = true;
+              }
           } else if (currentLvl === 6) {
-                disp = "6. Wow!!! You made it all the way to Mt. Katahdin, the northern terminus of the AT!!! You hiked a grand total of 2,181 miles!";
+                message = "6. Wow!!! You made it all the way to Mt. Katahdin, the northern terminus of the AT!!! You hiked a grand total of 2,181 miles!";
                 if (loc6 === false){
                   score += 5;
                   loc6 = true;
               }
           } else if (currentLvl === 7) {
-                disp = "Well done, you have completed the Appalachian Trail! Time to return home";
+                message = "Well done, you have completed the Appalachian Trail! Time to return home";
                 if (loc7 === false){
                   loc7 = true;
               }
-            }
+          }
 
-          updateDisplay(disp);
+          updateDisplay(message);
         }
 
     // User command control
