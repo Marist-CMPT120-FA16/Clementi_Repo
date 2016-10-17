@@ -59,6 +59,8 @@
         var loc3 = false;
         var loc4 = false;
         var loc0 = false;
+        var loc5 = false;
+        var loc6 = false;
 
     // Function to display score and location in textbox
       function textDisp(msg) {
@@ -73,33 +75,45 @@
             disp = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
             if (loc0 === false){
               score += 5;
-              loc0 = false;
+              loc0 = true;
             }
           } else if (currentLvl === 1) {
               disp = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
               if (loc1 === false){
                 score += 5;
-                loc1 = false;
+                loc1 = true;
               }
           } else if (currentLvl === 2) {
               disp = "2. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
               if (loc2 === false){
                 score += 5;
-                loc2 = false;
+                loc2 = true;
               }
           } else if (currentLvl === 3) {
               disp = "3. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
               if (loc3 === false){
                 score += 5;
-                loc3 = false;
+                loc3 = true;
               }
           } else if (currentLvl === 4) {
               disp = "4. Wow!!! You made it all the way to Mt. Katahdin!!! You hiked a grand total of 2,181 miles!";
               if (loc4 === false){
                 score += 5;
-                loc4 = false;
+                loc4 = true;
               }
-          }
+          } else if (currentLvl === 5) {
+              disp = "";
+              if (loc5 === false){
+                    score += 5;
+                    loc5 = true;
+                  }
+          } else if (currentLvl === 6) {
+                disp = "";
+                if (loc6 === false){
+                  score += 5;
+                  loc6 = true;
+              }
+            }
           textDisp(disp);
         }
 
@@ -120,6 +134,12 @@
                 } else if ((!loc4) && (currentLvl === 4)){
                   score = score + 5;
                   loc4 = true;
+                } else if ((!loc5) && (currentLvl === 5)){
+                  score = score + 5;
+                  loc5 = true;
+                } else if ((!loc6) && (currentLvl === 6)){
+                  score = score + 5;
+                  loc6 = true;
                 }
               }
 
@@ -138,7 +158,7 @@
           if (currentLvl === 1){
             currentLvl = 2;
           } else if (currentLvl === 3){
-              currentLvl =4 ;
+              currentLvl = 4;
               }
            trail();
          }
