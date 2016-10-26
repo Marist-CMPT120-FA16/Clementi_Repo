@@ -87,53 +87,28 @@
     // Location descriptions and score handlers: also prevents player from getting points for visiting location a second time
         function trail() {
           var message = "";
-          if (currentLvl === 0){
-            message = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
-            if (loc0 === false){
-              score += 5;
-              loc0 = true;
-            }
-          } else if (currentLvl === 1) {
-              message = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
-              if (loc1 === false){
-                score += 5;
-                loc1 = true;
-              }
-          } else if (currentLvl === 2) {
-              message = "2. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!";
-              if (loc2 === false){
-                score += 5;
-                loc2 = true;
-              }
-          } else if (currentLvl === 3) {
-              message = "3. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
-              if (loc3 === false){
-                score += 5;
-                loc3 = true;
-              }
-          } else if (currentLvl === 4) {
-              message = "4. You made it to the Taconic Mountains! You're very close to Marist College!";
-              if (loc4 === false){
-                score += 5;
-                loc4 = true;
-              }
-          } else if (currentLvl === 5) {
-              message = "5. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
-              if (loc5 === false){
-                score += 5;
-                loc5 = true;
-              }
-          } else if (currentLvl === 6) {
-                message = "6. Wow!!! You made it all the way to Mt. Katahdin, the northern terminus of the AT!!! You hiked a grand total of 2,181 miles!";
-                if (loc6 === false){
-                  score += 5;
-                  loc6 = true;
-              }
-          } else if (currentLvl === 7) {
-                message = "Well done, you have completed the Appalachian Trail! Time to return home";
-                if (loc7 === false){
-                  loc7 = true;
-              }
+          switch (currentLvl) {
+            case 0: message = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.":
+              break;
+            case 1: message = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.":
+              break;
+            case 2: message = "2. Next stop: The Blue Ridge Mountains!":
+              break;
+            case 3: message = "3. Well done, you've made it to Shenandoah National Park!":
+              break;
+            case 4: message = "4. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!":
+              break;
+            case 5: message = "5. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!":
+              break;
+            case 6: message = "6. You made it to the Taconic Mountains! Stop into New Paltz for a drink and a nice burger! P.S. You're also very close to Marist College!":
+              break;
+            case 7: message = "7. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!":
+              break;
+            case 8: message = "8. You are now in the Presidential Mountain Range! Take a look at the Mt. Washington ":
+              break;
+            case 9: message = "9. Wow!!! You made it all the way to Mt. Katahdin, the northern terminus of the AT!!! You hiked a grand total of 2,181 miles!":
+              break;
+            default: message = "You broke your femur and had to return home to recover. Better luck next year."
           }
 
           updateDisplay(message);
