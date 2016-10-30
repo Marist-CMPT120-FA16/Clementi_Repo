@@ -89,14 +89,14 @@
     // Function to display score and location in textbox
 
       function updateDisplay (message) {
-          document.getElementById("textDisplay").value="\n"+message+"\n Score: "+score+"\n"+document.getElementById("textDisplay").value;
-        }
+         var target = document.getElementById("textDisplay");
+         target.value = message + "\n\n\n" + target.value;
+      }
 
 
-
-        function trail() {
-          var message = "";
-          switch (currentLvl) {
+      function trail() {
+        var message = "";
+        switch (currentLvl) {
             case 0: Location0();
               break;
             case 1: Location1();
@@ -192,6 +192,52 @@
         scoreCheck();
         message = message + "\n" + "Your score is: " + score;
         updateDisplay(message);
+      }
+
+    // Score Check function
+      function scoreCheck() {
+        if (! loc0) {
+          if (currentLvl === 0) {
+            score = score + 5;
+            loc0 = true;
+          }
+        else if ((! loc1) && (currentLvl === 1)) {
+          score = score + 5;
+          loc1 = true;
+          }
+        else if ((! loc2) && (currentLvl === 2)) {
+          score = score + 5;
+          loc2 = true;
+          }
+        else if ((! loc3) && (currentLvl === 3)) {
+          score = score + 5;
+          loc3 = true;
+          }
+        else if ((! loc4) && (currentLvl === 4)) {
+          score = score + 5;
+          loc4 = true;
+          }
+        else if ((! loc5) && (currentLvl === 5)) {
+          score = score + 5;
+          loc5 = true;
+          }
+        else if ((! loc6) && (currentLvl === 6)) {
+          score = score + 5;
+          loc6 = true;
+          }
+        else if ((! loc7) && (currentLvl === 7)) {
+          score = score + 5;
+          loc7 = true;
+          }
+        else if ((! loc8) && (currentLvl === 8)) {
+          score = score + 5;
+          loc = true;
+          }
+        else if ((! loc9) && (currentLvl === 9)) {
+          score = score + 5;
+          loc9 = true;
+          }
+        }
       }
 
     // User command control
