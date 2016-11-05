@@ -14,9 +14,6 @@
 // 6. Add items to be taken at different locations - “list” command to display current inventory
 
 
-// Javascript Code begins here
-<script type="text/Javascript1. ">
-
  // Declaration of Global Variables
      var currentLvl = 0;
      var score = 0;
@@ -327,4 +324,3 @@
          updateDisplay("Now you're completely lost. Call for an airlift by chosing a different direction.")
        }
      }
-</script>
