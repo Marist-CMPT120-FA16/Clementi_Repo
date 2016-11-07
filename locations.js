@@ -86,7 +86,6 @@
            break;
          default: message = "You broke your femur and had to return home to recover. Better luck next year."
        }
-
        updateDisplay(message);
      }
 
@@ -170,8 +169,7 @@
  // If they have not, 5 point is awarded; if they have, no points are added
 
    function scoreCheck() {
-     if (! loc0) {
-       if (currentLvl === 0) {
+     if ((! loc0) && (currentLvl === 0)) {
          score = score + 5;
          loc0 = true;
        }
@@ -212,7 +210,7 @@
        loc9 = true;
        }
      }
-   }
+
 
  // User inputed command control
  // Takes user imput from command textbox, converts it to lowercase
@@ -341,3 +339,24 @@
          updateDisplay("Now you're completely lost. Call for an airlift by chosing a different direction.")
        }
      }
+
+// Item function - item object contains three traits - id, name, description.
+  function item (id,name,desc){
+      this.id = id;
+      this.name = name;
+      this.desc = desc;
+
+      function toString(){
+        return desc;
+      }
+    }
+
+// Item declaration and description, first value is id, second is name of item, third is description of item)
+    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals");
+    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
+    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
+    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
+    var naglene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
+
+// Inventory hold - open spaces for 5 items
+    var inventory = [null,null,null,null,null]
