@@ -385,24 +385,29 @@
     var naglene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!", false);
 
 // Inventory hold - open spaces for 5 items
-    var inventory = [null,null,null,null,null]
+    var inventory = [""]
 
 // Take function - for interest of time, I chose to do this as an if / else if sequence... for next project, I hope to clean this up.
       function btnInvTake(){
         if ((currentLvl === 1) && (backpack.taken = false)){
           updateDisplay(backpack.desc);
           backpack.taken = true;
+          inventory.push("Backpack");
         } else if ((currentLvl === 2) && (boots.taken = false)){
           updateDisplay(boots.desc);
           boots.taken = true;
+          inventory.push("Boots");
         } else if ((currentLvl === 4) && (food.taken = false)){
           updateDisplay(food.desc);
           food.taken = true;
+          inventory.push("Food");
         } else if ((currentLvl === 6) && (stove.taken = false)){
           updateDisplay(stove.desc);
           stove.taken = true;
+          inventory.push("Stove");
         } else if ((currentLvl === 7) && (naglene.taken = false)){
           updateDisplay(naglene.desc);
           naglene.taken = true;
-        }
+          inventory.push("Nalgene");
+        } else updateDisplay ("There is nothing to take!");
       }
