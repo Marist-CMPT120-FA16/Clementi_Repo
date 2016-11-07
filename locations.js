@@ -146,14 +146,14 @@
    }
 
    function Location1() {
-     var message = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go.";
+     var message = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go." + "\n" + "Click 'Take' to pick up your brand new backpack!";
      scoreCheck ();
      message = message + "\n" + "Your score is: " + score;
      updateDisplay(message);
    }
 
    function Location2() {
-     var message = "2. Next stop: The Blue Ridge Mountains!";
+     var message = "2. Next stop: The Blue Ridge Mountains!" + "\n" + "There is a new pair of boots here for you! Click 'Take'!";
      scoreCheck ();
      message = message + "\n" + "Your score is: " + score;
      updateDisplay(message);
@@ -167,7 +167,7 @@
    }
 
    function Location4() {
-     var message = "4. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!";
+     var message = "4. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!" + "\n" + "Click 'Take' to get food from the Harpers Ferry General Store";
      scoreCheck();
      message = message + "\n" + "Your score is: " + score;
      updateDisplay(message);
@@ -181,14 +181,14 @@
    }
 
    function Location6() {
-     var message = "6. You made it to the Taconic Mountains! Stop into New Paltz for a drink and a nice burger! P.S. You're also very close to Marist College!";
+     var message = "6. You made it to the Taconic Mountains! Stop into New Paltz for a drink and a nice burger! P.S. You're also very close to Marist College!" + "\n" + "Finally, a new stove is available";
      scoreCheck();
      message = message + "\n" + "Your score is: " + score;
      updateDisplay(message);
    }
 
    function Location7() {
-     var message = "7. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!";
+     var message = "7. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!" + "\n" + "Need a new water bottle? Here's one!";
      scoreCheck();
      message = message + "\n" + "Your score is: " + score;
      updateDisplay(message);
@@ -305,7 +305,7 @@
              currentLvl = 7;
        } else if (currentLvl === 7) {
              currentLvl = 8;
-       }  else if (currentLvl === 8) {
+       } else if (currentLvl === 8) {
              currentLvl = 9;
        }
          trail();
@@ -366,10 +366,11 @@
      }
 
 // Item function - item object contains three traits - id, name, description.
-  function item (id,name,desc){
+  function item (id,name,desc,taken){
       this.id = id;
       this.name = name;
       this.desc = desc;
+      this.taken = false;
 
   function toString(){
         return desc;
@@ -377,11 +378,31 @@
     }
 
 // Item declaration and description, first value is id, second is name of item, third is description of item)
-    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals");
-    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
-    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
-    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
-    var naglene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
+    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals", false);
+    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!", false);
+    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear", false);
+    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D", false);
+    var naglene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!", false);
 
 // Inventory hold - open spaces for 5 items
     var inventory = [null,null,null,null,null]
+
+// Take function - for interest of time, I chose to do this as an if / else if sequence... for next project, I hope to clean this up.
+      function btnInvTake(){
+        if ((currentLvl === 1) && (backpack.taken = false)){
+          updateDisplay(backpack.desc);
+          backpack.taken = true;
+        } else if ((currentLvl === 2) && (boots.taken = false)){
+          updateDisplay(boots.desc);
+          boots.taken = true;
+        } else if ((currentLvl === 4) && (food.taken = false)){
+          updateDisplay(food.desc);
+          food.taken = true;
+        } else if ((currentLvl === 6) && (stove.taken = false)){
+          updateDisplay(stove.desc);
+          stove.taken = true;
+        } else if ((currentLvl === 7) && (naglene.taken = false)){
+          updateDisplay(naglene.desc);
+          naglene.taken = true;
+        }
+      }
