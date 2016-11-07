@@ -24,7 +24,7 @@
     <textarea rows="15"
           cols="50"
           style = "color:red; font-weight=bold; font-size:15pt"
-          id="textDisplay">To begin hiking the Appalachian Trail, click any button!
+          id="textDisplay">
     </textarea>
 
 <!-- Button Location Definitions -->
@@ -32,24 +32,32 @@
 <br>
       <input type = "button"
              value = "North"
+             id = "btnNorth"
              onClick = "btnNorth();"
              style = "font-weight=bold; font-size:15pt">
       <input type = "button"
              value = "West"
+             id = "btnWest"
              onClick = "btnWest();"
              style = "font-weight=bold; font-size:15pt">
       <input type = "button"
              value = "South"
+             id = "btnSouth"
              onClick = "btnSouth();"
              style = "font-weight=bold; font-size:15pt">
       <input type = "button"
              value = "East"
+             id = "btnEast"
              onClick = "btnEast();"
              style = "font-weight=bold; font-size:15pt">
 <br>
       <input type = "button"
              value = "Help"
              onClick = "btnHelp();"
+             style = "font-weight=bold; font-size:15pt">
+      <input type = "button"
+             value = "Take"
+             onClick = "btnInvTake();"
              style = "font-weight=bold; font-size:15pt">
       <input type = "button"
              value = "Inventory"
@@ -66,6 +74,8 @@
 <p><a href="mailto:johnathan.clementi1@marist.edu">Bugs with The Game? Send the developer an email!</a></p>
 
     <img src = "http://martykimsey.com/website/agent_pictures/5237/app%20trail%20map.jpg" alt = "HTML5 Icon">
+
+<body onload="init()">
 
    </body>
  </div>

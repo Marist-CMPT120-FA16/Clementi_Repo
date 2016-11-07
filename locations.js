@@ -32,7 +32,11 @@
 
  //Initialization Function - boots up program
    function init() {
-     trail();
+     updateDisplay ("To begin hiking the Appalachian Trail, click any button!");
+     document.getElementById("btnNorth").disabled = false;
+     document.getElementById("btnSouth").disabled = false;
+     document.getElementById("btnEast").disabled = false;
+     document.getElementById("btnWest").disabled = true;
    }
 
 
@@ -65,24 +69,64 @@
      var message = "";
      switch (currentLvl) {
          case 0: Location0();
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnWest").disabled = true;
            break;
          case 1: Location1();
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnWest").disabled = false;
            break;
          case 2: Location2();
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnWest").disabled = true;
            break;
          case 3: Location3();
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnWest").disabled = true;
            break;
          case 4: Location4();
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnWest").disabled = true;
            break;
          case 5: Location5();
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnWest").disabled = false;
            break;
          case 6: Location6();
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnWest").disabled = true;
            break;
          case 7: Location7();
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnWest").disabled = true;
            break;
          case 8: Location8();
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnWest").disabled = false;
            break;
          case 9: Location9();
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnWest").disabled = true;
            break;
          default: message = "You broke your femur and had to return home to recover. Better luck next year."
        }
@@ -290,6 +334,8 @@
            currentLvl = 5;
        } else if (currentLvl === 7) {
              currentLvl = 8;
+       } else if (currentLvl === 3) {
+             currentLvl = 4;
        }
          trail();
      }
