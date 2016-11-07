@@ -35,11 +35,28 @@
      trail();
    }
 
- // Function to display score and location in textbox
+
+// Function to display score and location in textbox
    function updateDisplay (message) {
       var target = document.getElementById("textDisplay");
       target.value = message + "\n\n\n" + target.value;
    }
+
+//Help function - gives user valid inpunts and commands
+     function btnHelp(){
+       updateDisplay ("The valid moves are North, South, East, West, N, S, E, W." +
+                       "\n\n" + "Or use the buttons below" + "\n" + "Commands are 'Lets Hike', 'Help', 'Take' and 'Inventory.'"
+                       + "\n" + "Press 'Lets Hike' to input your directional command."
+                       + "\n" + "Press 'Help' for a list of valid commands and inputs."
+                       + "\n" + "Press 'Take' to store the item in your inventory."
+                       + "\n" + "Press 'Inventory' to see your inventory."
+                       )
+     }
+
+//Inventory Command
+     function btnInvList(){
+       updateDisplay ("Your inventory is: " + inventory)
+     }
 
  // Trail function is a switch case function that analysizes what level the user is on, and then pushes them to the function for that level
  // Switch case simply calls the function for the indiviual location handler
@@ -188,7 +205,7 @@
        }
      else if ((! loc8) && (currentLvl === 8)) {
        score = score + 5;
-       loc = true;
+       loc8 = true;
        }
      else if ((! loc9) && (currentLvl === 9)) {
        score = score + 5;
