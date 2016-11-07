@@ -256,77 +256,56 @@
        if (currentLvl === 0) {
          currentLvl = 1;
        } else if (currentLvl === 3) {
-         btnError();
-       } else if (currentLvl === 5) {
-         btnError();
-       } else if (currentLvl === 7) {
-         btnError();
-       } else if (currentLvl === 2) {
-           currentLvl = 3;
-       } else if (currentLvl === 4) {
-             currentLvl = 5;
+           currentLvl = 4;
        } else if (currentLvl === 6) {
              currentLvl = 7;
+       } else if (currentLvl === 7) {
+             currentLvl = 8;
+       }  else if (currentLvl === 8) {
+             currentLvl = 9;
        }
          trail();
      }
 
      function btnWest(){
-       if (currentLvl === 1){
-         currentLvl = 2;
-       } else if (currentLvl === 3) {
-         btnError();
-       } else if (currentLvl === 5) {
-         btnError();
-       } else if (currentLvl === 7) {
-         btnError();
-       } else if (currentLvl === 4){
-           currentLvl = 5;
-       } else if (currentLvl === 2) {
-           currentLvl = 3;
-       } else if (currentLvl === 6) {
-             currentLvl = 7;
+       if (currentLvl === 2){
+         currentLvl = 3;
+       } else if (currentLvl === 5){
+           currentLvl = 6;
+       } else if (currentLvl === 8) {
+           currentLvl = 9;
+       } else if (currentLvl === 1) {
+             currentLvl = 2;
        }
         trail();
       }
 
 
      function btnSouth(){
-       if (currentLvl === 1){
-         currentLvl = 2;
-       } else if (currentLvl === 2) {
-         btnError();
+       if (currentLvl === 2){
+         currentLvl = 3;
+       } else if (currentLvl === 0){
+           currentLvl = 1;
        } else if (currentLvl === 4) {
-         btnError();
+           currentLvl = 5;
        } else if (currentLvl === 7) {
-         btnError();
-       } else if (currentLvl === 3){
-           currentLvl = 4;
-       } else if (currentLvl === 5) {
-           currentLvl = 6;
-       } else if (currentLvl === 6) {
-             currentLvl = 7;
+             currentLvl = 8;
        }
          trail();
      }
 
      function btnEast(){
-       if (currentLvl === 2){
-         currentLvl = 3;
-       } else if (currentLvl === 1) {
-         btnError();
-       } else if (currentLvl === 3) {
-         btnError();
-       } else if (currentLvl === 7) {
-         btnError();
+       if (currentLvl === 0){
+         currentLvl = 1;
        } else if (currentLvl === 5){
            currentLvl = 6;
-       } else if (currentLvl === 4) {
-           currentLvl = 5;
        } else if (currentLvl === 6) {
-             currentLvl = 7;
-       }
-         trail();
+           currentLvl = 7;
+       } else if (currentLvl === 4) {
+             currentLvl = 5;
+       } else if (currentLvl === 1) {
+             currentLvl = 2;
+       } trail();
      }
 
    // If the user is inputing too many of the same inputs, the game will stop the user and remind them to use all four directions
@@ -346,7 +325,7 @@
       this.name = name;
       this.desc = desc;
 
-      function toString(){
+  function toString(){
         return desc;
       }
     }
