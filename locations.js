@@ -366,10 +366,10 @@
      }
 
 // Item function - item object contains three traits - id, name, description.
-  function item (id,name,desc,taken){
-      this.id = id;
-      this.name = name;
-      this.desc = desc;
+  function Item (idarg,namearg,descarg) {
+      this.id = idarg;
+      this.name = namearg;
+      this.desc = descarg;
       this.taken = false;
 
   function toString(){
@@ -378,36 +378,36 @@
     }
 
 // Item declaration and description, first value is id, second is name of item, third is description of item)
-    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals", false);
-    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!", false);
-    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear", false);
-    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D", false);
-    var naglene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!", false);
+    var stove = new Item (0, "Stove", "This camp stove will help you cook warm meals");
+    var food = new Item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
+    var backpack = new Item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
+    var boots = new Item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
+    var naglene = new Item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
 
 // Inventory hold - open spaces for 5 items
-    var inventory = [""]
+    var inventory = [""];
 
 // Take function - for interest of time, I chose to do this as an if / else if sequence... for next project, I hope to clean this up.
       function btnInvTake(){
-        if ((currentLvl === 1) && (backpack.taken = false)){
-          updateDisplay(backpack.desc);
-          backpack.taken = true;
+        if ((currentLvl === 1) && (backpack.takenarg = false)){
+          updateDisplay(backpack.descarg);
+          backpack.takenarg = true;
           inventory.push("Backpack");
         } else if ((currentLvl === 2) && (boots.taken = false)){
-          updateDisplay(boots.desc);
-          boots.taken = true;
+          updateDisplay(boots.descarg);
+          boots.takenarg = true;
           inventory.push("Boots");
-        } else if ((currentLvl === 4) && (food.taken = false)){
-          updateDisplay(food.desc);
-          food.taken = true;
+        } else if ((currentLvl === 4) && (food.takenarg = false)){
+          updateDisplay(food.descarg);
+          food.takenarg = true;
           inventory.push("Food");
         } else if ((currentLvl === 6) && (stove.taken = false)){
-          updateDisplay(stove.desc);
-          stove.taken = true;
+          updateDisplay(stove.descarg);
+          stove.takenarg = true;
           inventory.push("Stove");
-        } else if ((currentLvl === 7) && (naglene.taken = false)){
-          updateDisplay(naglene.desc);
-          naglene.taken = true;
+        } else if ((currentLvl === 7) && (naglene.takenarg = false)){
+          updateDisplay(naglene.descarg);
+          naglene.takenarg = true;
           inventory.push("Nalgene");
         } else updateDisplay ("There is nothing to take!");
       }
