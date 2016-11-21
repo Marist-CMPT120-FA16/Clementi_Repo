@@ -17,14 +17,6 @@
 // [5 pts] Modify your take command to use the inventory array.
 // [5 pts] Update your i or inventory command to make use of this array when listing the items the player is carrying.
 
-// Declaration of Global Variables
-    var currentLvl = 0;
-    var score = 0;
-    var btnErrorCount = 0;
-    var limit = 5;
-    var direction = 0
-// Inventory hold - open spaces for items
-    var inventory = [""];
 
 //Initialization Function - boots up program
   function init() {
@@ -34,7 +26,6 @@
     document.getElementById("btnEast").disabled = false;
     document.getElementById("btnWest").disabled = true;
   }
-
 
 // Function to display score and location in textbox
   function updateDisplay (message) {
@@ -53,40 +44,25 @@
                       )
     }
 
+// Declaration of Global Variables
+        var score = 0;
+        var btnErrorCount = 0;
+        var limit = 5;
+// Inventory hold - open spaces for items
+        var inventory = [""];
 
 
+// Location prototype - item object contains 5 traits - id, name, description, item, and if the loc was visited.
 
-
-
-// Location prototype - item object contains six traits - id, name, description, description after visited, item, and if the loc was visited.
-  function location (id, name, desc, descVisited, item){
-    this.id = id;
-    this.name = name;
-    this.desc = desc;
- // this.descVisited = descVisited;
-    this.item = item;
-    this.visited = false;
-
-  function toString(){
-    return desc;
   }
 }
 
 // Location declaration and description: (ID #, Name of location, description of location; if there is an item at this location (staff camps))
-  var baseCamp = new location (0, "Base Camp", "All Philmont Treks begin at base camp. Get your tent assignment and enjoy opening campfire! Don't forget to pick up your Crew Flag", crewFlag);
-  var loversLeap = new location (1, "Lovers Leap trail camp", "Your first night on trail is at Lovers Leap trail camp! Get some sleep, tomorrow is going to be a long day of hiking!", null);
-  var minersPark = new location (2, "Miners Park staff camp", "Welcome to the 'South Country!' You can experience outdoor rock climbing at Miners Park! There is a new nalgene for sale here.", naglene);
   var craterLake = new location (3, "Crater Lake staff camp", "Crater Lake is a living history camp that is set in an early 20th century logging company. You can climb a spar pole here!", null);
-  var toothOfTime = new location (4, "Tooth of Time", "The most identifiable landmark on PSR property, you can see basecamp from the 'Tooth'. This rock structure sits at 9,003 ft above sea level", food);
-  var porcupine = new location (5, "Porcupine trail camp", "There are some ruins of an old cabin next to the Rayado creek at this trail camp", null);
-  var clearCreek = new location (6, "Clear Creek staff camp", "This camp is the highest staff camp in elevation. There are black powder rifles to shoot here! Don't forget to pick up your new stove here", stove);
   var mountPhilips = new location (7, "Mount Philips", "This mountain is the 2nd tallest mountain on the property at 11,742ft.");
-  var cimmarroncito = new location (8, "Cimmarroncito staff camp", "Otherwise known as 'Cito', this one of the largest and most central camps on the ranch. Cito also has outdoor rock climbing as well as an indoor bouldering gym", null);
   var vistoGrande = new location (9, "Visto Grande trail camp", "This camp has a beautiful view of the hike over the next few days.", null);
-  var headOfDean = new location (10, "Head of Dean staff camp", "HOD is a challenge course camp that helps your crew come together as a team.  The staff have new boots here for you!", boots);
   var locations = [baseCamp,loversLeap,minersPark,craterLake,toothOfTime,porcupine,clearCreek,mountPhilips,cimmarroncito,vistoGrande,headOfDean];
 // Item function - item object contains three traits - id, name, description.
-  function Item (id,name,desc) {
       this.id = id;
       this.name = name;
       this.desc = desc;
@@ -110,25 +86,15 @@
     // baseCamp       [N,E,S,W]
                       [0,0,1,2],
     // loversLeap
-                      [0,0,0,0],
     // minersPark
-                      [0,0,0,0],
     // craterLake
-                      [0,0,0,0],
     // toothOfTime
-                      [0,0,0,0],
     // porcupine
-                      [0,0,0,0],
     // clearCreek
-                      [0,0,0,0],
     // mountPhilips
-                      [0,0,0,0],
     // cimmarroncito
-                      [0,0,0,0],
     // vistoGrande
-                      [0,0,0,0],
     // headOfDean
-                      [0,0,0,0],
     ];
 
 // Button Event Function Handlers
@@ -156,25 +122,17 @@
 // Then it looks to see if the user has been at that location. If they have, no score is added, if not, 5pts is added to the score
 // Then the buttons are disabled based on what actions can be carried out
   function trail(){
-    var loc = location[currentLvl];
-    var msg = loc.name + ":" + "\n" + loc.desc;
 
-    if (loc.visited === false){
       score += 5;
-      loc.visited = true;
   }
     document.getElementById("btnNorth").disabled = false;
     document.getElementById("btnEast").disabled = false;
     document.getElementById("btnSouth").disabled = true;
     document.getElementById("btnWest").disabled = false;
 
-    if (loc.id === matrix[currentLvl[0]]){
     document.getElementById("btnNorth").disabled = true;
-  } if (loc.id === matrix[currentLvl[1]]){
     document.getElementById("btnEast").disabled = true;
-  } if (loc.id === matrix[currentLvl[2]]){
     document.getElementById("btnSouth").disabled = true;
-  } if (loc.id === matrix[currentLvl[3]]){
     document.getElementById("btnWest").disabled = true;
   }
     updateDisplay (msg);
@@ -185,13 +143,10 @@
 //If there is, it 'takes' the item and puts it in the user's inventory and then removes it from the location so that if you visit the location again, the item wont be there
   function btnInvTake(){
     var loc = location[currentLvl];
-    if (loc.item === null){
       updateDisplay ("There are no items at this camp!")
     }
     else {
-      var item = loc.item;
       inventory[item.id] = item;
-      loc.item = null;
    // loc.desc = loc descVisited;
    // updateDisplay ("Congrats! You recieved: "+ item.name);
     }
