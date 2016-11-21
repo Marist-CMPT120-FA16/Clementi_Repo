@@ -30,7 +30,7 @@
 // Function to display score and location in textbox
   function updateDisplay (message) {
      var target = document.getElementById("textDisplay");
-     target.value = message + "\n" + "Your score is: " + score + "\n\n\n" + target.value ;
+     target.value = message + "\n\n\n" + target.value ;
   }
 
 //Help function - gives user valid inpunts and commands
@@ -48,8 +48,7 @@
         var score = 0;
         var btnErrorCount = 0;
         var limit = 5;
-// Inventory hold - open spaces for items
-        var inventory = [""];
+
 
 
 // Location prototype - item object contains 5 traits - id, name, description, item, and if the loc was visited.
@@ -69,7 +68,7 @@
 // Location declaration and description: (ID #, Name of location, description of location; if there is an item at this location (staff camps))
   var baseCamp = new location (0, "Base Camp", "All Philmont Treks begin at base camp. Get your tent assignment and enjoy opening campfire! Don't forget to pick up your Crew Flag", "", crewFlag, false);
   var loversLeap = new location (1, "Lovers Leap trail camp", "Your first night on trail is at Lovers Leap trail camp! Get some sleep, tomorrow is going to be a long day of hiking!", "", null, false);
-  var minersPark = new location (2, "Miners Park staff camp", "Welcome to the 'South Country!' You can experience outdoor rock climbing at Miners Park! There is a new nalgene for sale here.", "", naglene, false);
+  var minersPark = new location (2, "Miners Park staff camp", "Welcome to the 'South Country!' You can experience outdoor rock climbing at Miners Park! There is a new nalgene for sale here.", "", nalgene, false);
   var craterLake = new location (3, "Crater Lake staff camp", "Crater Lake is a living history camp that is set in an early 20th century logging company. You can climb a spar pole here!", null);
   var toothOfTime = new location (4, "Tooth of Time", "The most identifiable landmark on PSR property, you can see basecamp from the 'Tooth'. This rock structure sits at 9,003 ft above sea level", "", food, false);
   var porcupine = new location (5, "Porcupine trail camp", "There are some ruins of an old cabin next to the Rayado creek at this trail camp", "", null, false);
@@ -81,27 +80,6 @@
 // Location array
   var locations = [baseCamp,loversLeap,minersPark,craterLake,toothOfTime,porcupine,clearCreek,mountPhilips,cimmarroncito,vistoGrande,headOfDean];
 
-// Item function - item object contains three traits - id, name, description.
-  function item (id,name,desc) {
-      this.id = id;
-      this.name = name;
-      this.desc = desc;
-      this.taken = false;
-
-  function toString(){
-        return name + desc;
-      }
-    }
-
-// Item declaration and description, first value is id, second is name of item, third is description of item)
-    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals");
-    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
-    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
-    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
-    var naglene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
-    var crewFlag = new item (5, "Crew Leader Flag", "This American Flag is attached to the crew leader's backpack");
-// Items array
-    var items = [stove,food,backpack,boots,nalgene,crewFlag];
 // matrix
 console.log ("create a matrix");
     var matrix = [
@@ -154,10 +132,6 @@ var direction = 0;
       score += 5;
       tempLocale.visited = true;
   }
-    document.getElementById("btnNorth").disabled = false;
-    document.getElementById("btnEast").disabled = false;
-    document.getElementById("btnSouth").disabled = true;
-    document.getElementById("btnWest").disabled = false;
 
     if (tempLocale.id == matrix[currentLvl[0]]){
     document.getElementById("btnNorth").disabled = true;
@@ -168,23 +142,47 @@ var direction = 0;
   } if (tempLocale.id == matrix[currentLvl[3]]){
     document.getElementById("btnWest").disabled = true;
   }
-    updateDisplay (msg);
+    updateDisplay (msg + "\n" + "Your score is: " + score);
 }
+
+// Item function - item object contains three traits - id, name, description.
+  function item (id,name,desc) {
+      this.id = id;
+      this.name = name;
+      this.desc = desc;
+      this.taken = false;
+
+  function toString(){
+        return name + desc;
+      }
+    }
+
+// Item declaration and description, first value is id, second is name of item, third is description of item)
+    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals");
+    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
+    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
+    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
+    var nalgene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
+    var crewFlag = new item (5, "Crew Leader Flag", "This American Flag is attached to the crew leader's backpack");
+// Items array
+    var item = [stove,food,backpack,boots,nalgene,crewFlag]
+
+// Inventory hold - open spaces for items
+    var inventory = [];
+
 //Take function evaluates whether or not there is an item at the location
 //If not, it tells user that there is no item
 //If there is, it 'takes' the item and puts it in the user's inventory and then removes it from the location so that if you visit the location again, the item wont be there
   function btnInvTake(){
-    var tempLocale = locations[currentLvl];
-    var msg = tempLocale.item + ":" + "\n" + tempLocale.desc;
+    var locitem = locations[currentLvl];
 
-    if (tempLocale.item === null){
+    if (locitem.item == null){
       updateDisplay ("There are no items at this camp!");
     }
     else {
-      var item = tempLocale.item;
-      inventory[item.name] = item;
-      tempLocale.item = null;
-      tempLocale.desc = tempLocale.descVisited;
+      var item = locitem.item;
+      inventory.push(item.name);
+      locitem.item = null;
       updateDisplay ("Congrats! You recieved: "+ item.name);
     }
 }
@@ -192,12 +190,7 @@ var direction = 0;
 
 //
 function btnInvList(){
-	var message = "Your Inventory is: \n";
-	for (var i = 0; i < inventory.length-1; i++) {
-		if (inventory[i] != null){
-			message += inventory[i].name + ": " + inventory[i].desc + "\n";
-		}
-	}
+	var message = "Your Inventory is: " + inventory;
 	updateDisplay(message);
 }
 // User inputed command control
