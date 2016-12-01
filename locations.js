@@ -5,409 +5,226 @@
 // Game vO.4: Hitchhikers Guide to the Appalachian Trail-->
 
 // To do:
-// 1. still need to fix functionality of button functions - level counting is messed up
-// 2. add a map (does it need to be interactive??!?!?!)
-// 3. Help Command -
-    //  - button that displays all available commands and options
-// 4. init function needs “onload” event tag and functionality
-// 5. BUTTONS MUST TURN OFF AND ON NOW!
-// 6. Add items to be taken at different locations - “list” command to display current inventory
+// Fix anything that was incorrect or incomplete with your prior project. (Commit. Push.)
+// Then, beginning with a perfect implementation of the prior version of your game, implement the following new features:
+// [10 pts] Develop a Location prototype {id, name, description, item, toString()}
+// [5 pts] Instantiate an instance of Location() for each location in your game.  (If you have 10 locations in your game, you'll have 10 instances of the same prototype.)
+// [10 pts] Store those location instances in a global array.
+// [10 pts] Refactor your game so that the location functions use this global array instead of the hard-coded text you had before.
+// [5 pts] Develop an Item prototype {id, name description, toString()}
+// [5 pts] Instantiate an instance of Item() for each item that can be found in your game (at least four (4) of them) and store zero or one item at each location.
+// [5 pts] Declare a global array to hold the player's inventory.
+// [5 pts] Modify your take command to use the inventory array.
+// [5 pts] Update your i or inventory command to make use of this array when listing the items the player is carrying.
 
 
- // Declaration of Global Variables
-     var currentLvl = 0;
-     var score = 0;
-     var btnErrorCount = 0;
-     var limit = 5;
-     var loc0 = false;
-     var loc1 = false;
-     var loc2 = false;
-     var loc3 = false;
-     var loc4 = false;
-     var loc5 = false;
-     var loc6 = false;
-     var loc7 = false;
-     var loc8 = false;
-     var loc9 = false;
-
- //Initialization Function - boots up program
-   function init() {
-     updateDisplay ("To begin hiking the Appalachian Trail, click any button!");
-     document.getElementById("btnNorth").disabled = false;
-     document.getElementById("btnSouth").disabled = false;
-     document.getElementById("btnEast").disabled = false;
-     document.getElementById("btnWest").disabled = true;
-   }
-
+//Initialization Function - boots up program
+  function init() {
+    updateDisplay ("To begin your trek at Philmont Scout Ranch, click a button or input a direction and click 'Lets Hike!'!");
+    document.getElementById("btnNorth").disabled = false;
+    document.getElementById("btnSouth").disabled = false;
+    document.getElementById("btnEast").disabled = false;
+    document.getElementById("btnWest").disabled = true;
+  }
 
 // Function to display score and location in textbox
-   function updateDisplay (message) {
-      var target = document.getElementById("textDisplay");
-      target.value = message + "\n\n\n" + target.value;
-   }
+  function updateDisplay (message) {
+     var target = document.getElementById("textDisplay");
+     target.value = message + "\n\n\n" + target.value ;
+  }
 
 //Help function - gives user valid inpunts and commands
-     function btnHelp(){
-       updateDisplay ("The valid moves are North, South, East, West, N, S, E, W." +
-                       "\n\n" + "Or use the buttons below" + "\n" + "Commands are 'Lets Hike', 'Help', 'Take' and 'Inventory.'"
-                       + "\n" + "Press 'Lets Hike' to input your directional command."
-                       + "\n" + "Press 'Help' for a list of valid commands and inputs."
-                       + "\n" + "Press 'Take' to store the item in your inventory."
-                       + "\n" + "Press 'Inventory' to see your inventory."
-                       )
-     }
+  function btnHelp(){
+      updateDisplay ("The valid moves are North, South, East, West, N, S, E, W." +
+                      "\n\n" + "Or use the buttons below" + "\n" + "Commands are 'Lets Hike', 'Help', 'Take' and 'Inventory.'"
+                      + "\n" + "Press 'Lets Hike' to input your directional command."
+                      + "\n" + "Press 'Help' for a list of valid commands and inputs."
+                      + "\n" + "Press 'Take' to store the item in your inventory."
+                      + "\n" + "Press 'Inventory' to see your inventory."
+                    );
+    }
 
-//Inventory Command
-     function btnInvList(){
-       updateDisplay ("Your inventory is: " + inventory)
-     }
-
- // Trail function is a switch case function that analysizes what level the user is on, and then pushes them to the function for that level
- // Switch case simply calls the function for the indiviual location handler
-
-   function trail() {
-     var message = "";
-     switch (currentLvl) {
-         case 0: Location0();
-         document.getElementById("btnNorth").disabled = false;
-         document.getElementById("btnSouth").disabled = false;
-         document.getElementById("btnEast").disabled = false;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         case 1: Location1();
-         document.getElementById("btnNorth").disabled = true;
-         document.getElementById("btnSouth").disabled = true;
-         document.getElementById("btnEast").disabled = false;
-         document.getElementById("btnWest").disabled = false;
-           break;
-         case 2: Location2();
-         document.getElementById("btnNorth").disabled = true;
-         document.getElementById("btnSouth").disabled = false;
-         document.getElementById("btnEast").disabled = false;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         case 3: Location3();
-         document.getElementById("btnNorth").disabled = false;
-         document.getElementById("btnSouth").disabled = false;
-         document.getElementById("btnEast").disabled = true;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         case 4: Location4();
-         document.getElementById("btnNorth").disabled = true;
-         document.getElementById("btnSouth").disabled = false;
-         document.getElementById("btnEast").disabled = false;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         case 5: Location5();
-         document.getElementById("btnNorth").disabled = true;
-         document.getElementById("btnSouth").disabled = true;
-         document.getElementById("btnEast").disabled = false;
-         document.getElementById("btnWest").disabled = false;
-           break;
-         case 6: Location6();
-         document.getElementById("btnNorth").disabled = false;
-         document.getElementById("btnSouth").disabled = true;
-         document.getElementById("btnEast").disabled = false;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         case 7: Location7();
-         document.getElementById("btnNorth").disabled = false;
-         document.getElementById("btnSouth").disabled = false;
-         document.getElementById("btnEast").disabled = true;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         case 8: Location8();
-         document.getElementById("btnNorth").disabled = false;
-         document.getElementById("btnSouth").disabled = true;
-         document.getElementById("btnEast").disabled = true;
-         document.getElementById("btnWest").disabled = false;
-           break;
-         case 9: Location9();
-         document.getElementById("btnNorth").disabled = true;
-         document.getElementById("btnSouth").disabled = true;
-         document.getElementById("btnEast").disabled = true;
-         document.getElementById("btnWest").disabled = true;
-           break;
-         default: message = "You broke your femur and had to return home to recover. Better luck next year."
-       }
-       updateDisplay(message);
-     }
-
- // Event Handlers
- // First objective is to display a message as to where the user is.
- // Then the scoreCheck function is activated, which counts the users score based on the current level
- // These two are then pieced together and then sent to the updateDisplay function which displays the text in the textbox
-
-   function Location0() {
-     var message = "0. You are at the Southern Terminus of the AT: Springer Mountain in Georgia.";
-     scoreCheck ();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location1() {
-     var message = "1. Congrats! You've made it to the Great Smokey Mountains, you still have quite a ways to go." + "\n" + "Click 'Take' to pick up your brand new backpack!";
-     scoreCheck ();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location2() {
-     var message = "2. Next stop: The Blue Ridge Mountains!" + "\n" + "There is a new pair of boots here for you! Click 'Take'!";
-     scoreCheck ();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location3() {
-     var message = "3. Well done, you've made it to Shenandoah National Park!";
-     scoreCheck ();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location4() {
-     var message = "4. Woohoo! You have arrived at Harpers Ferry, West Virginia. Check out the history of this town!" + "\n" + "Click 'Take' to get food from the Harpers Ferry General Store";
-     scoreCheck();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location5() {
-     var message = "5. Welcome to the half way point: Pine Grove Furnace. Get a half gallon of ice cream to celebrate!";
-     scoreCheck();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location6() {
-     var message = "6. You made it to the Taconic Mountains! Stop into New Paltz for a drink and a nice burger! P.S. You're also very close to Marist College!" + "\n" + "Finally, a new stove is available";
-     scoreCheck();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location7() {
-     var message = "7. Awesome job, you're now in the White Mountains! Enjoy your stay at the AMC huts!" + "\n" + "Need a new water bottle? Here's one!";
-     scoreCheck();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location8() {
-     var message = "8. You are now in the Presidential Mountain Range! Take a look at the Mt. Washington";
-     scoreCheck();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
-   function Location9() {
-     var message = "9. Wow!!! You made it all the way to Mt. Katahdin, the northern terminus of the AT!!! You hiked a grand total of 2,181 miles!";
-     scoreCheck();
-     message = message + "\n" + "Your score is: " + score;
-     updateDisplay(message);
-   }
-
- // Score Check function
- // Decides whether or not the user has been to this location before
- // If they have not, 5 point is awarded; if they have, no points are added
-
-   function scoreCheck() {
-     if ((! loc0) && (currentLvl === 0)) {
-         score = score + 5;
-         loc0 = true;
-       }
-     else if ((! loc1) && (currentLvl === 1)) {
-       score = score + 5;
-       loc1 = true;
-       }
-     else if ((! loc2) && (currentLvl === 2)) {
-       score = score + 5;
-       loc2 = true;
-       }
-     else if ((! loc3) && (currentLvl === 3)) {
-       score = score + 5;
-       loc3 = true;
-       }
-     else if ((! loc4) && (currentLvl === 4)) {
-       score = score + 5;
-       loc4 = true;
-       }
-     else if ((! loc5) && (currentLvl === 5)) {
-       score = score + 5;
-       loc5 = true;
-       }
-     else if ((! loc6) && (currentLvl === 6)) {
-       score = score + 5;
-       loc6 = true;
-       }
-     else if ((! loc7) && (currentLvl === 7)) {
-       score = score + 5;
-       loc7 = true;
-       }
-     else if ((! loc8) && (currentLvl === 8)) {
-       score = score + 5;
-       loc8 = true;
-       }
-     else if ((! loc9) && (currentLvl === 9)) {
-       score = score + 5;
-       loc9 = true;
-       }
-     }
+// Declaration of Global Variables
+        var score = 0;
+        var btnErrorCount = 0;
+        var limit = 5;
 
 
- // User inputed command control
- // Takes user imput from command textbox, converts it to lowercase
- // Switch case is then entered, if command is valid, it will call the button functions which activate the chain
- // If the command is not valid, message stating what the valid commands are will be displayed
 
-   function cmdBoxGo (direction){
-     var prevLvl = currentLvl
+// Location prototype - item object contains 5 traits - id, name, description, item, and if the loc was visited.
+    function location (id, name, desc, descVisited, item){
+      this.id = id;
+      this.name = name;
+      this.desc = desc;
+      this.descVisited = descVisited;
+      this.item = item;
+      this.visited = false;
 
-     direction = direction.toLowerCase();
+      function toString(){
+        return name + desc;
+  }
+}
 
-     switch (direction) {
-     // North command
-       case ('n'):
-       case ('north'):
-         btnNorth();
-         break;
-     // West command
-       case ('w'):
-       case ('west'):
-         btnWest();
-         break;
-     // South command
-       case ('s'):
-       case ('south'):
-         btnSouth();
-         break;
-     // East command
-       case ('e'):
-       case ('east'):
-         btnEast();
-         break;
+// Location declaration and description: (ID #, Name of location, description of location; if there is an item at this location (staff camps))
+  var baseCamp = new location (0, "Base Camp", "All Philmont Treks begin at base camp. Get your tent assignment and enjoy opening campfire! Don't forget to pick up your Crew Flag", "", crewFlag, false);
+  var loversLeap = new location (1, "Lovers Leap trail camp", "Your first night on trail is at Lovers Leap trail camp! Get some sleep, tomorrow is going to be a long day of hiking!", "", null, false);
+  var minersPark = new location (2, "Miners Park staff camp", "Welcome to the 'South Country!' You can experience outdoor rock climbing at Miners Park! There is a new nalgene for sale here.", "", nalgene, false);
+  var craterLake = new location (3, "Crater Lake staff camp", "Crater Lake is a living history camp that is set in an early 20th century logging company. You can climb a spar pole here!", null);
+  var toothOfTime = new location (4, "Tooth of Time", "The most identifiable landmark on PSR property, you can see basecamp from the 'Tooth'. This rock structure sits at 9,003 ft above sea level", "", food, false);
+  var porcupine = new location (5, "Porcupine trail camp", "There are some ruins of an old cabin next to the Rayado creek at this trail camp", "", null, false);
+  var clearCreek = new location (6, "Clear Creek staff camp", "This camp is the highest staff camp in elevation. There are black powder rifles to shoot here! Don't forget to pick up your new stove here", "", stove, false);
+  var mountPhilips = new location (7, "Mount Philips", "This mountain is the 2nd tallest mountain on the property at 11,742ft.", "", null, false);
+  var cimmarroncito = new location (8, "Cimmarroncito staff camp", "Otherwise known as 'Cito', this one of the largest and most central camps on the ranch. Cito also has outdoor rock climbing as well as an indoor bouldering gym", "", null, false);
+  var vistoGrande = new location (9, "Visto Grande trail camp", "This camp has a beautiful view of the hike over the next few days.", null);
+  var headOfDean = new location (10, "Head of Dean staff camp", "HOD is a challenge course camp that helps your crew come together as a team.  The staff have new boots here for you!", "", boots, false);
+// Location array
+  var locations = [baseCamp,loversLeap,minersPark,craterLake,toothOfTime,porcupine,clearCreek,mountPhilips,cimmarroncito,vistoGrande,headOfDean];
 
-       default: updateDisplay("Whoops, please only input valid direction values such as North, South, East, West, N, S, E, W");
-     }
-     document.getElementById('cmdBoxGo').value = "";
-   }
+// matrix
+console.log ("create a matrix");
+    var matrix = [
+    /*                [N,E,S,W]*/
+    /* baseCamp*/     [0,0,1,1],
+    /*loversLeap*/    [0,0,3,2],
+    /*minersPark*/    [8,4,3,3],
+    /*craterLake*/    [2,1,3,5],
+    /*toothOfTime*/   [4,0,4,2],
+    /*porcupine*/     [6,3,5,5],
+    /*clearCreek*/    [7,6,5,6],
+    /*mountPhilips*/  [7,8,6,7],
+    /*cimmarroncito*/ [9,8,2,7],
+    /*vistoGrande*/   [10,9,8,9],
+    /*headOfDean*/    [10,10,9,10],
+  ];
 
- // Button Event Function Handlers
- // Decides what level the user is at and based on the current level, advances the user to another level
- // The level numbers are used to determine which location function should be carried out, and thus which "location" (meaning along the AT) the user is at
-     function btnNorth() {
-       if (currentLvl === 0) {
-         currentLvl = 1;
-       } else if (currentLvl === 3) {
-           currentLvl = 4;
-       } else if (currentLvl === 6) {
-             currentLvl = 7;
-       } else if (currentLvl === 7) {
-             currentLvl = 8;
-       } else if (currentLvl === 8) {
-             currentLvl = 9;
-       }
-         trail();
-     }
+// Button Event Function Handlers
+// Click event for each button codes for 1 column of events in matrix
+// i.e. North = 1st column; East = 2nd column; South = 3rd column; West = 4th column
+var currentLvl = 0;
+var direction = 0;
 
-     function btnWest(){
-       if (currentLvl === 2){
-         currentLvl = 3;
-       } else if (currentLvl === 5){
-           currentLvl = 6;
-       } else if (currentLvl === 8) {
-           currentLvl = 9;
-       } else if (currentLvl === 1) {
-             currentLvl = 2;
-       }
-        trail();
-      }
+  function btnNorth(){
+      currentLvl = matrix[currentLvl][0];
+      characterMover();
+    }
+  function btnEast(){
+      currentLvl = matrix[currentLvl][1];
+      characterMover();
+    }
+  function btnSouth(){
+      currentLvl = matrix[currentLvl][2];
+      characterMover();
+    }
+  function btnWest(){
+      currentLvl = matrix[currentLvl][3];
+      characterMover();
+    }
 
 
-     function btnSouth(){
-       if (currentLvl === 2){
-         currentLvl = 3;
-       } else if (currentLvl === 0){
-           currentLvl = 1;
-       } else if (currentLvl === 4) {
-           currentLvl = 5;
-       } else if (currentLvl === 7) {
-             currentLvl = 8;
-       } else if (currentLvl === 3) {
-             currentLvl = 4;
-       }
-         trail();
-     }
+// characterMover function is no longer switch case; simple else if statement that determines what level the user is at
+// Then it looks to see if the user has been at that location. If they have, no score is added, if not, 5pts is added to the score
+// Then the buttons are disabled based on what actions can be carried out
+  function characterMover(){
+    var tempLocale = locations[currentLvl];
+    var msg = tempLocale.name + ":" + "\n" + tempLocale.desc;
 
-     function btnEast(){
-       if (currentLvl === 0){
-         currentLvl = 1;
-       } else if (currentLvl === 5){
-           currentLvl = 6;
-       } else if (currentLvl === 6) {
-           currentLvl = 7;
-       } else if (currentLvl === 4) {
-             currentLvl = 5;
-       } else if (currentLvl === 1) {
-             currentLvl = 2;
-       } trail();
-     }
+    if (tempLocale.visited === false){
+      score += 5;
+      tempLocale.visited = true;
+  }
 
-   // If the user is inputing too many of the same inputs, the game will stop the user and remind them to use all four directions
-     function btnError() {
-       btnErrorCount = btnErrorCount + 1;
-       if (btnErrorCount < limit) {
-         updateDisplay("Stop wandering off! Try going a different direction!")
-       }
-       else {
-         updateDisplay("Now you're completely lost. Call for an airlift by chosing a different direction.")
-       }
-     }
+    if (tempLocale.id == matrix[currentLvl[0]]){
+    document.getElementById("btnNorth").disabled = true;
+  } if (tempLocale.id == matrix[currentLvl[1]]){
+    document.getElementById("btnEast").disabled = true;
+  } if (tempLocale.id == matrix[currentLvl[2]]){
+    document.getElementById("btnSouth").disabled = true;
+  } if (tempLocale.id == matrix[currentLvl[3]]){
+    document.getElementById("btnWest").disabled = true;
+  }
+    updateDisplay (msg + "\n" + "Your score is: " + score);
+}
 
 // Item function - item object contains three traits - id, name, description.
-  function Item (idarg,namearg,descarg) {
-      this.id = idarg;
-      this.name = namearg;
-      this.desc = descarg;
+  function item (id,name,desc) {
+      this.id = id;
+      this.name = name;
+      this.desc = desc;
       this.taken = false;
 
   function toString(){
-        return desc;
+        return name + desc;
       }
     }
 
 // Item declaration and description, first value is id, second is name of item, third is description of item)
-    var stove = new Item (0, "Stove", "This camp stove will help you cook warm meals");
-    var food = new Item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
-    var backpack = new Item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
-    var boots = new Item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
-    var naglene = new Item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
+    var stove = new item (0, "Stove", "This camp stove will help you cook warm meals");
+    var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
+    var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
+    var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
+    var nalgene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
+    var crewFlag = new item (5, "Crew Leader Flag", "This American Flag is attached to the crew leader's backpack");
+// Items array
+    var item = [stove,food,backpack,boots,nalgene,crewFlag]
 
-// Inventory hold - open spaces for 5 items
-    var inventory = [""];
+// Inventory hold - open spaces for items
+    var inventory = [];
 
-// Take function - for interest of time, I chose to do this as an if / else if sequence... for next project, I hope to clean this up.
-      function btnInvTake(){
-        if ((currentLvl === 1) && (backpack.takenarg = false)){
-          updateDisplay(backpack.descarg);
-          backpack.takenarg = true;
-          inventory.push("Backpack");
-        } else if ((currentLvl === 2) && (boots.taken = false)){
-          updateDisplay(boots.descarg);
-          boots.takenarg = true;
-          inventory.push("Boots");
-        } else if ((currentLvl === 4) && (food.takenarg = false)){
-          updateDisplay(food.descarg);
-          food.takenarg = true;
-          inventory.push("Food");
-        } else if ((currentLvl === 6) && (stove.taken = false)){
-          updateDisplay(stove.descarg);
-          stove.takenarg = true;
-          inventory.push("Stove");
-        } else if ((currentLvl === 7) && (naglene.takenarg = false)){
-          updateDisplay(naglene.descarg);
-          naglene.takenarg = true;
-          inventory.push("Nalgene");
-        } else updateDisplay ("There is nothing to take!");
+//Take function evaluates whether or not there is an item at the location
+//If not, it tells user that there is no item
+//If there is, it 'takes' the item and puts it in the user's inventory and then removes it from the location so that if you visit the location again, the item wont be there
+  function btnInvTake(){
+    var locitem = locations[currentLvl];
+
+    if (locitem.item == null){
+      updateDisplay ("There are no items at this camp!");
+    }
+    else {
+      var item = locitem.item;
+      inventory.push(item.name);
+      locitem.item = null;
+      updateDisplay ("Congrats! You recieved: "+ item.name);
+    }
+}
+
+
+//
+function btnInvList(){
+	var message = "Your Inventory is: " + inventory;
+	updateDisplay(message);
+}
+// User inputed command control
+// Takes user imput from command textbox, converts it to lowercase
+// Switch case is then entered, if command is valid, it will call the button functions which activate the chain
+// If the command is not valid, message stating what the valid commands are will be displayed
+
+  function cmdBoxGo (direction){
+    var prevLvl = currentLvl;
+    direction = direction.toLowerCase();
+
+    switch (direction) {
+        // North command
+          case ("n"):
+          case ("north"):
+            btnNorth();
+            break;
+        // West command
+          case ("w"):
+          case ("west"):
+            btnWest();
+            break;
+        // South command
+          case ("s"):
+          case ("south"):
+            btnSouth();
+            break;
+        // East command
+          case ("e"):
+          case ("east"):
+            btnEast();
+            break;
+
+          default: updateDisplay("Whoops, please only input valid direction values such as North, South, East, West, N, S, E, W");
+        }
+        document.getElementById("cmdBoxGo").value = "";
       }
