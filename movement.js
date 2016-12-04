@@ -7,20 +7,20 @@
 // Button Event Function Handlers
 // Click event for each button codes for 1 column of events in matrix
 // i.e. North = 1st column; East = 2nd column; South = 3rd column; West = 4th column
-  function btnNorth(NORTH){
-      currentLvl = matrix[currentLvl][0];
+  function btnNorth(){
+      currentLvl = matrix[currentLvl][NORTH];
       characterMover();
     }
-  function btnEast(EAST){
-      currentLvl = matrix[currentLvl][1];
+  function btnEast(){
+      currentLvl = matrix[currentLvl][EAST];
       characterMover();
     }
-  function btnSouth(SOUTH){
-      currentLvl = matrix[currentLvl][1];
+  function btnSouth(){
+      currentLvl = matrix[currentLvl][SOUTH];
       characterMover();
     }
-  function btnWest(WEST){
-      currentLvl = matrix[currentLvl][3];
+  function btnWest(){
+      currentLvl = matrix[currentLvl][WEST];
       characterMover();
     }
 
@@ -32,10 +32,7 @@
     var tempLocale = locations[currentLvl];
     var msg = tempLocale.name + ":" + "\n" + tempLocale.desc;
 
-    if (tempLocale.visited === false){
-      score += 5;
-      tempLocale.visited = true;
-  }
+    scoreCount(tempLocale);
 
     if (tempLocale.id == matrix[currentLvl[NORTH]]){
     document.getElementById("btnNorth").disabled = true;
@@ -48,6 +45,14 @@
   }
     updateDisplay (msg + "\n" + "Your score is: " + score);
 }
+
+// Score counting function
+    function scoreCount (tempLocale){
+      if (tempLocale.visited === false){
+            score += 5;
+            tempLocale.visited = true;
+        }
+    }
 
 // User inputed command control
 // Takes user imput from command textbox, converts it to lowercase

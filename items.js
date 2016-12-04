@@ -8,12 +8,15 @@
 // Item function - item object contains three traits - id, name, description.
   function item (id,name,desc) {
       this.id = id;
+      alert(id);
       this.name = name;
+      // alert(name);
       this.desc = desc;
+      // alert(desc);
       this.taken = false;
 
   function toString(){
-        return name + desc;
+        return desc;
       }
     }
 
@@ -24,8 +27,6 @@
     var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
     var nalgene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
     var crewFlag = new item (5, "Crew Leader Flag", "This American Flag is attached to the crew leader's backpack");
-// Items array
-    var item = [stove,food,backpack,boots,nalgene,crewFlag];
 
 // Inventory hold - open spaces for items
     var inventory = [];

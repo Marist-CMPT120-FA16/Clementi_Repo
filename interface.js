@@ -8,9 +8,9 @@
 
 //Initialization Function - boots up program
   function init() {
-    characterMover();
-    location ();
     item();
+    location();
+    characterMover();
   }
 
 // Function to display score and location in textbox
