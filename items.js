@@ -8,7 +8,7 @@
 // Item function - item object contains three traits - id, name, description.
   function item (id,name,desc) {
       this.id = id;
-      alert(id);
+      // alert(id);
       this.name = name;
       // alert(name);
       this.desc = desc;
@@ -25,8 +25,11 @@
     var food = new item (1, "Food", "Woah, someone left three freeze-dried meals on the ground!");
     var backpack = new item (2, "Backpack", "This is a brand new backpack to hold all of your gear");
     var boots = new item (3, "Boots", "Those old boots gave you blisters! Here are some new ones! :D");
-    var nalgene = new item (4, "Nalgene water bottle", "These water bottles hold a litre of water each!");
+    var nalgene = new item (4, "Nalgene water bottle", "This Nalgene water bottle holds a liter of water!");
     var crewFlag = new item (5, "Crew Leader Flag", "This American Flag is attached to the crew leader's backpack");
+
+//Array for items
+    var itemsArray = [stove, food, backpack, boots, nalgene, crewFlag];
 
 // Inventory hold - open spaces for items
     var inventory = [];
@@ -37,7 +40,7 @@
   function btnInvTake(){
     var locitem = locations[currentLvl];
 
-    if (locitem.item === null){
+    if (locitem.item == null){
       updateDisplay ("There are no items at this camp!");
     }
     else {

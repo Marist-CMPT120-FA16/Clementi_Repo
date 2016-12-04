@@ -86,5 +86,5 @@
 
           default: updateDisplay("Whoops, please only input valid direction values such as North, South, East, West, N, S, E, W");
         }
-        document.getElementById("cmdBoxGo").value = "";
+        onClick = document.getElementById("cmdBox").value = '';
       }

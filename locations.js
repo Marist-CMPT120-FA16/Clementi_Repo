@@ -6,7 +6,7 @@
 
 
 // Location prototype - item object contains 5 traits - id, name, description, item, and if the loc was visited.
-    function location (id, name, desc, descVisited, item){
+    function location (id, name, desc, item){
       this.id = id;
       // alert(id);
       this.name = name;
