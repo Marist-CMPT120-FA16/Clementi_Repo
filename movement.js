@@ -53,17 +53,128 @@
     }
   // Button Enable/Disable Function
     function btnEnable(){
-      var tempLocale = locations[currentLvl];
-        if (tempLocale.id == matrix[currentLvl[NORTH]]){
-          document.getElementById("btnNorth").disabled = true;
-        } if (tempLocale.id == matrix[currentLvl[EAST]]){
-          document.getElementById("btnEast").disabled = true;
-        } if (tempLocale.id == matrix[currentLvl[SOUTH]]){
-          document.getElementById("btnSouth").disabled = true;
-        } if (tempLocale.id == matrix[currentLvl[WEST]]){
-          document.getElementById("btnWest").disabled = true;
-        }
+         if (currentLvl === 0){
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnWest").disabled = false;
+       }
+         if (currentLvl === 1){
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnWest").disabled = false;
+       }
+         if (currentLvl === 2){
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnWest").disabled = true;
+       }
+         if (currentLvl === 3){
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnWest").disabled = false;
+       }
+         if (currentLvl === 4){
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnWest").disabled = false;
+       }
+         if (currentLvl === 5){
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnSouth").disabled = true;
+         document.getElementById("btnWest").disabled = true;
+       }
+         if (currentLvl === 6){
+         document.getElementById("btnNorth").disabled = false;
+         document.getElementById("btnEast").disabled = true;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnWest").disabled = true;
+       }
+         if (currentLvl === 7){
+         document.getElementById("btnNorth").disabled = true;
+         document.getElementById("btnEast").disabled = false;
+         document.getElementById("btnSouth").disabled = false;
+         document.getElementById("btnWest").disabled = true;
+       }
+       if (currentLvl === 8){
+       document.getElementById("btnNorth").disabled = false;
+       document.getElementById("btnEast").disabled = true;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = false;
+     }
+       if (currentLvl === 9){
+       document.getElementById("btnNorth").disabled = true;
+       document.getElementById("btnEast").disabled = false;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = true;
+     }
+       if (currentLvl === 10){
+       document.getElementById("btnNorth").disabled = false;
+       document.getElementById("btnEast").disabled = true;
+       document.getElementById("btnSouth").disabled = true;
+       document.getElementById("btnWest").disabled = false;
+     }
+       if (currentLvl === 11){
+       document.getElementById("btnNorth").disabled = false;
+       document.getElementById("btnEast").disabled = false;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = false;
+     }
+       if (currentLvl === 12){
+       document.getElementById("btnNorth").disabled = true;
+       document.getElementById("btnEast").disabled = false;
+       document.getElementById("btnSouth").disabled = true;
+       document.getElementById("btnWest").disabled = true;
+     }
+       if (currentLvl === 13){
+       document.getElementById("btnNorth").disabled = true;
+       document.getElementById("btnEast").disabled = true;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = true;
+     }
+       if (currentLvl === 14){
+       document.getElementById("btnNorth").disabled = true;
+       document.getElementById("btnEast").disabled = true;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = false;
+     }
+       if (currentLvl === 15){
+       document.getElementById("btnNorth").disabled = false;
+       document.getElementById("btnEast").disabled = true;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = true;
+     }
+       if (currentLvl === 16){
+       document.getElementById("btnNorth").disabled = false;
+       document.getElementById("btnEast").disabled = false;
+       document.getElementById("btnSouth").disabled = false;
+       document.getElementById("btnWest").disabled = true;
+     }
+
     }
+
+
+
+
+
+
+
+    //   var tempLocale = locations[currentLvl];
+    //     if (tempLocale.id == matrix[currentLvl[NORTH]]){
+    //       document.getElementById("btnNorth").disabled = true;
+    //     } if (tempLocale.id == matrix[currentLvl[EAST]]){
+    //       document.getElementById("btnEast").disabled = true;
+    //     } if (tempLocale.id == matrix[currentLvl[SOUTH]]){
+    //       document.getElementById("btnSouth").disabled = true;
+    //     } if (tempLocale.id == matrix[currentLvl[WEST]]){
+    //       document.getElementById("btnWest").disabled = true;
+    //     }
+    // }
 // Refresh function (still working on functionality)
     // function refresh() {
     //     setTimeout(function () {
