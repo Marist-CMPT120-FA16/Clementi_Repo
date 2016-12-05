@@ -29,7 +29,7 @@
     var fork = new item (8, "Fork", "This giant fork is the symbol for Clarks Fork. Don't let the staff know you have it, or they'll come after you!");
 
 //Array for items
-    var itemsArray = [stove, food, backpack, boots, nalgene, crewFlag];
+    var itemsArray = [stove, food, backpack, boots, nalgene, crewFlag, brand, petroglyph, fork];
 
 // Inventory hold - open spaces for items
     var inventory = [];
@@ -40,7 +40,7 @@
   function btnInvTake(){
     var locitem = locations[currentLvl];
 
-    if (locitem.item == null){
+    if (locitem.item === null){
       updateDisplay ("There are no items at this camp!");
     }
     else {

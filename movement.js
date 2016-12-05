@@ -32,27 +32,44 @@
     var tempLocale = locations[currentLvl];
     var msg = tempLocale.name + ":" + "\n" + tempLocale.desc;
 
-    scoreCount(tempLocale);
-
-    if (tempLocale.id == matrix[currentLvl[NORTH]]){
-    document.getElementById("btnNorth").disabled = true;
-  } if (tempLocale.id == matrix[currentLvl[EAST]]){
-    document.getElementById("btnEast").disabled = true;
-  } if (tempLocale.id == matrix[currentLvl[SOUTH]]){
-    document.getElementById("btnSouth").disabled = true;
-  } if (tempLocale.id == matrix[currentLvl[WEST]]){
-    document.getElementById("btnWest").disabled = true;
-  }
+    btnEnable();
+    scoreCount(tempLocale);
     updateDisplay (msg + "\n" + "Your score is: " + score);
 }
 
-// Score counting function
+  // Score counting function
     function scoreCount (tempLocale){
       if (tempLocale.visited === false){
             score += 5;
             tempLocale.visited = true;
         }
+      if ((tempLocale == baseCamp) && (score > 55)){
+        alert("Congratulations, you have completed your first Philmont Trek! This is a great accomplishment!");
+        // refresh();
+        // window.location.reload(true);
+        // score = 0;
+        // textDisplay = "";
+      }
     }
+  // Button Enable/Disable Function
+    function btnEnable(){
+      var tempLocale = locations[currentLvl];
+        if (tempLocale.id == matrix[currentLvl[NORTH]]){
+          document.getElementById("btnNorth").disabled = true;
+        } if (tempLocale.id == matrix[currentLvl[EAST]]){
+          document.getElementById("btnEast").disabled = true;
+        } if (tempLocale.id == matrix[currentLvl[SOUTH]]){
+          document.getElementById("btnSouth").disabled = true;
+        } if (tempLocale.id == matrix[currentLvl[WEST]]){
+          document.getElementById("btnWest").disabled = true;
+        }
+    }
+// Refresh function (still working on functionality)
+    // function refresh() {
+    //     setTimeout(function () {
+    //         location.reload()
+    //     }, 100);
+    // }
 
 // User inputed command control
 // Takes user imput from command textbox, converts it to lowercase

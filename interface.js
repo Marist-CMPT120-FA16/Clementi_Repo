@@ -29,9 +29,22 @@
 // Declaration of Global Variables
     var score = 0;
     var currentLvl = 0;
+    var limit = 5;
+    var btnErrorCount = 0;
 
 // Constant variables NORTH, EAST, SOUTH, WEST
     var NORTH = 0;
     var EAST = 1;
     var SOUTH = 2;
     var WEST = 3;
+
+// If the user is inputing too many of the same inputs, the game will stop the user and remind them to use all four directions
+    function btnError() {
+        btnErrorCount = btnErrorCount + 1;
+      if (btnErrorCount < limit) {
+        updateDisplay("Stop wandering off! Try going a different direction!")
+      }
+      else {
+        updateDisplay("Now you're completely lost. Call for an airlift by chosing a different direction.")
+      }
+    }

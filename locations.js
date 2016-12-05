@@ -35,29 +35,29 @@
   var richCabins = new location (13, "Rich Cabins staff camp", "Rich Cabins is the former home of the Rich Family, which lived there from the 1880's to the late 1920's.", null);
   var ponil = new location (14, "Ponil staff camp", "Ponil was the first basecamp for PSR and still serves as the largest staff camp other than base camp. You can get your water bottles or boots branded", brand);
   var indianWritings = new location (15, "Indian Writings staff camp", "Indian Writings is an active archaeologic site that studies ancient Native American petroglyphs. You can press 'Take' to see go on a petroglyph tour.", petroglyph);
-  var clarksFork = new location (16, "Clarks Fork staff camp", "Clarks for is the closest staff camp to the Tooth of Time and has horse riding! Take the giant fork as a prize!", fork;
+  var clarksFork = new location (16, "Clarks Fork staff camp", "Clarks for is the closest staff camp to the Tooth of Time and has horse riding! Take the giant fork as a prize!", fork);
 // Location array
-  var locations = [baseCamp,loversLeap,minersPark,craterLake,toothOfTime,porcupine,clearCreek,mountPhilips,cimmarroncito,vistoGrande,headOfDean];
+  var locations = [baseCamp, loversLeap, minersPark, craterLake, toothOfTime, porcupine, clearCreek, mountPhilips, cimmarroncito, vistoGrande, deanCow, headOfDean, baldyMountain, richCabins, ponil, indianWritings, clarksFork];
 
 // matrix
 console.log ("create a matrix");
     var matrix = [
     /*                      [N,E,S,W]*/
-    /* #0: baseCamp*/       [,,1,4],
-    /* #1: loversLeap*/     [0,,,2],
-    /* #2: minersPark*/     [16,1,3,],
-    /* #3: craterLake*/     [2,,,5],
-    /* #4: toothOfTime*/    [,0,,16],
-    /* #5: porcupine*/      [6,3,,],
-    /* #6: clearCreek*/     [7,,5,],
-    /* #7:mountPhilips*/    [,8,6,],
-    /* #8: cimmarroncito*/  [9,,16,7],
-    /* #9: vistoGrande*/    [,10,8,],
-    /* #10: deanCow*/       [11,,,9],
+    /* #0: baseCamp*/       [0,0,1,4],
+    /* #1: loversLeap*/     [0,1,1,2],
+    /* #2: minersPark*/     [16,1,3,2],
+    /* #3: craterLake*/     [2,3,3,5],
+    /* #4: toothOfTime*/    [4,0,4,16],
+    /* #5: porcupine*/      [6,3,5,5],
+    /* #6: clearCreek*/     [7,6,5,6],
+    /* #7: mountPhilips*/   [7,8,6,7],
+    /* #8: cimmarroncito*/  [9,8,16,7],
+    /* #9: vistoGrande*/    [9,10,8,9],
+    /* #10: deanCow*/       [11,10,10,9],
     /* #11: headOfDean*/    [13,14,10,12],
-    /* #12: baldyMountain*/ [,11,,],
-    /* #13: richCabins*/    [,,11,],
-    /* #14: ponil*/         [,,15,11],
-    /* #15: indianWritings*/[14,,0,],
-    /* #16: clarksFork*/    [8,4,,16],
+    /* #12: baldyMountain*/ [12,11,12,12],
+    /* #13: richCabins*/    [13,13,11,13],
+    /* #14: ponil*/         [14,14,15,11],
+    /* #15: indianWritings*/[14,15,0,15],
+    /* #16: clarksFork*/    [8,4,2,16],
   ];
